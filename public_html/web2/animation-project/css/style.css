@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+nav {
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    font-size: 1.44rem;
+    color: rgb(111, 90, 71);
+    text-decoration: none;
+    padding: 30px;
+}
+
+nav a:hover {
+    color: #30103f;
+}
+
+#text {
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+}
+#text p {
+    animation-name: text;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    /* background-color: #BFB6D4; */
+}
+
+@keyframes text {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(100%);}
+}
+
+#head {
+    background-image: url(../img/leducchinh61900-woman-6023439.jpg); 
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    padding: 11.391rem;
+    margin-bottom: 50px;
+}
+h1 {
+    font-size: 100px;
+    text-align: center;
+    color: white;
+    position: relative;
+    top: 230px;
+}
+#card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-self: center;
+}
+#card-outfit {
+    background-color: #D3C758;
+    width: 300px;
+    height: 300px;
+    align-content: center;
+    text-align: center;
+    margin-left: 0px;
+    border-radius: 20px;    
+}
+#card-outfit:hover{
+    transition: transform 0.3s ease;
+    transform: rotate(5deg);
+    margin-left: -3em;
+    opacity: 0.7;
+    transition: opacity 500ms;
+}
+
+#card-hamburger {
+    background-color: #E0D6C8;
+    width: 300px;
+    height: 300px;
+    align-content: center;
+    text-align: center;
+    border-radius: 20px;
+}
+#card-hamburger:hover{
+    transition: transform 0.3s ease;
+    transform: rotate(5deg);
+    margin-left: -3em;
+    opacity: 0.7;
+    transition: opacity 500ms;
+}
+
+#card-store {
+    background-color: #785642;
+    width: 300px;
+    height: 300px;
+    align-content: center;
+    text-align: center;
+    border-radius: 20px;
+}
+#card-store:hover{
+    transform: rotate(5deg);
+    /* transition: transform 100ms ease-out; */
+    margin-left: -3em ;
+    opacity: 0.7;
+    transition: opacity 500ms;
+}
+
+#outfit {
+    display: flex;
+    width: max(500px, 60vw);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; 
+    /* background-color: #D3C758; */
+    justify-self: center;
+    margin-top: 50px;
+}
+.outfit-slide {
+    flex-shrink: 0;
+    width: calc(100% / 3); /* show three at a time */
+    aspect-ratio: .8;
+        img {
+        width: 100%;
+    }
+    scroll-snap-align: center;
+    animation: slide;
+    animation-timeline: view(inline);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+  }
+
+.outfit-slide.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#outfit img{
+    width: 250px;
+    height: auto;
+}
+@keyframes slide {
+  45%, 100% {
+    transform: scale(0.5);
+    border-radius: 20px;
+    filter: blur(6px) brightness(.8);
+  }
+  50% {
+    transform: scale(1);
+    border-radius: 4px;
+    filter: none;
+  }
+}
+
+
+#hamburger {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    height: 500px;
+    background-color: #E0D6C8;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+#hamburger.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+#hamburger-text h6{
+    font-size: 50px;
+    padding: 50px;
+}
+#hamburger-text p {
+    font-size: 20px;
+    padding: 50px;
+}
+
+#hamburger img {
+    width: 500px;
+    height: 500px;
+    justify-self: center;
+    align-self: center;
+}
+
+#store {
+    background-color: #785642;
+
+}
+iframe {
+    justify-self: center;
+}
+footer {
+    background-color:#E0D6C8;
+    width: 100%;
+    background-size: cover;
+    padding: 35px;
+    font-size: 17px;
+    color: #252926;
+    font-family: ElMessiri-Regular;
+    margin-top: 50px;
+}
+
+.footer-socials {
+    transition: opacity 1% ease;
+    position: relative;
+    bottom: 6px;
+}
+
+.footer-socials img {
+    height: 24px;
+}
+
+.footer-socials img:hover {
+    opacity: 0.5;
+}
+
+footer p {
+    max-width: 60%;
+    padding: 5px;
+}
+
+footer button:hover {
+    cursor: pointer;
+}

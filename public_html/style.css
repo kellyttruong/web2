@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 20px;
+    text-align: center;
+    font-size: 120px;
+    font-family: American Typewriter, serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 45px;
+}
+
+.class button img {
+    width: 20rem;
+    object-fit: cover;
+    padding: 10px;
+    height: 20rem;
+}
+
+.class {
+   display: grid;
+    place-items: center;
+    padding-top: 4rem;
+}
+
+button {
+    background-color: rgb(200, 217, 196);
+}
+
+button:hover {
+    background-color: rgb(224, 213, 191);
+}
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    color: lightslategray;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+@media screen and (min-width: 670px) {
+  .class {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .class {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .class {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

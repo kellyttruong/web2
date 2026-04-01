@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(140, 127, 94);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+video {
+    width: 100%;
+} 
+input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, textarea, select {
+    width: 200px;
+    font-size: 0.7em;
+    padding: 2px;
+    border: 2px solid rgb(70, 77, 10);
+    border-radius: 5px;
+}
+
+#send {
+    cursor: pointer; 
+    margin-top: 20px;
+    background-color: rgb(63, 73, 58);
+    color: rgb(224, 224, 168);
+}
+
+#send:hover {
+    background-color: rgb(91, 102, 87);
+}
+
+#reason {
+    display: block;
+}
+
+form {
+    width: 200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}

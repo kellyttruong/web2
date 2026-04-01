@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #D8DACA;
+}
+nav {
+  font-family: "Kavoon", serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 28px;
+  background-color: #2C3424;
+  padding: 17px;
+  
+}
+
+nav a {
+    color: #D8DACA;
+    text-decoration: none;
+    padding: 30px;
+}
+
+nav a:hover {
+    color: #708086;
+    text-decoration: line-through;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+#box { 
+    width: 90%; 
+    height: auto; 
+    background-color: #859581; 
+    justify-self: center; 
+    margin-top: 50px;
+    display: grid;
+     /* grid-template-columns: 300px 1fr;  */
+    grid-template-columns: 1.1fr 2fr;
+    outline: 5px solid #2C3424;
+}
+
+#box img {
+    max-width: 100%;
+     width: 30rem;
+     height: auto;
+     padding: 10px;
+     justify-self: center;
+}
+
+.text h1 {
+    font-size: 70px;
+    text-align: center;
+    padding: 40px;
+    color: #EFE7DB;
+}
+
+.text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 30px;
+    color: #EFE7DB;
+}
+
+.text p {
+    font-weight: bold;
+}
+
+.me {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    background-color: #2C3424;
+}
+
+#about-me {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-self: center;
+    padding: 80px;
+}
+
+#about-me p {
+    padding: 2.986rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    text-justify: center;
+}
+
+#about-me p a{
+    color: #4c5a3e;
+    text-decoration: none;
+    padding: 1.44rem;
+
+}
+
+#about-me p a:hover {
+    color: #859581;
+    text-decoration: dotted underline;
+}
+
+#about-me img {
+    max-width: 100%;
+    width: 30rem;
+    height: auto;
+    justify-self: center;
+}
+
+.figma {
+    color: #2C3424;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.figma:hover {
+    color: #859581;
+    transition: color 0.7s;
+    text-decoration: overline;
+}
+
+#project {
+    height: auto;
+    display: grid;
+    /* grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); */
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+    padding: 50px;
+    position: relative;
+    bottom: 30px;
+    
+}
+
+#project .square {
+    background-color: #708086;
+    width: 50rem;
+    max-width: 100%;
+    height: 13rem;
+    border-radius: 30px;
+    text-align: center;
+    padding: 90px;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #D8DACA;
+    text-decoration: none;
+}
+
+#project .square:hover {
+    background-color: #44565d;
+    color: #b6b8a8;
+
+}
+
+#exercise {
+    display: grid;
+    padding: 2.44rem;
+    margin: 2.44rem;
+    
+}
+
+#exercise .rectangle {
+    background-color: #8B998C;
+    width: 20rem;
+    max-height: 100%;
+    height: 34rem;
+    padding: 30px;
+    margin: 50px;
+    text-align: center;
+    justify-self: center;
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    color: #D8DACA;
+
+}
+
+#exercise .rectangle:hover {
+    background-color: #5c655d;
+    color: #b6b8a8;
+}
+
+footer {
+  background-color: #2C3424;
+  width: 100%;
+  background-size: cover;
+  padding: 35px;
+  font-size: 17px;
+  color: #D8DACA;
+  font-family: "Kavoon", serif;
+}
+
+.footer-socials {
+  transition: opacity 1% ease;
+  position: relative;
+  bottom: 20px;
+}
+
+.footer-socials img {
+  height: 24px;
+}
+
+.footer-socials img:hover {
+  opacity: 0.5;
+}
+
+footer p {
+  max-width: 60%;
+  padding: 5px;
+}
+
+@media screen and (max-width: 400px) {
+    #project {
+        grid-template-columns: 1fr;
+        resize: 10px;
+    }
+}
+
+@media screen and (min-width: 400px) {
+  #box, #about-me, #project{
+    grid-template-columns: 1fr ;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  #box{
+    grid-template-columns: 1fr 3fr;
+    size: 0.3rem;
+  }
+  #project {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+     #about-me {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    #project {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 700px) {
+  #exercise {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #exercise {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

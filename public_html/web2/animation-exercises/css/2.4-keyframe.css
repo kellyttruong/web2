@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(89, 106, 95);
+}
+
+h1 {
+    font-size: 3.44rem;
+}
+
+a:link {
+    transition: color 1s;
+}
+
+nav a:hover{
+    text-decoration: overline;
+    color: #796ba2;
+}
+
+img {
+    width: 30%;
+    animation-name: Motorcycle;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+@keyframes Motorcycle {
+  0% {
+    transform: translateX(0px);
+  }
+  47% {
+    transform: translateX(500px);
+  }
+  50% {
+    transform: rotateY(180deg) translateX(-500px);
+  }
+  97% {
+    transform: translateY(0px) rotateY(180deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}

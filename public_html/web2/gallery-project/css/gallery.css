@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #FDFAF4;
+}
+
+nav {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.44rem;
+  font-family: ElMessiri-Regular;
+  display: grid;
+  grid-template-columns: repeat(4, min-content);
+  justify-content: center;
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+    padding: 23px;
+}
+
+nav a:link {
+  transition: color 1s;
+}
+
+nav a:hover{
+    text-decoration: overline;
+    color: #8c9e81;
+}
+
+header {
+    background-image: url(../img/banner/banner-gallery_3108.jpg);
+    width: 100%;
+    background-position: center ;
+    background-size: cover;
+    padding: 11.391rem;
+    margin-bottom: 50px;
+}
+
+h1 {
+  font-size: 2.44rem;
+  font-family: GildaDisplay-Regular;
+  font-optical-sizing: auto;
+  color: #FDFAF4;
+}
+
+h1, h4 {
+  animation-name: Title;
+  animation-duration: 3s;
+}
+
+@keyframes Title {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+h4 {
+  font-family: Changa-Regular;
+  padding: 0.8rem;
+  color: #FDFAF4;
+}
+
+figcaption {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-family: Changa-Regular;
+  padding: 1px;
+}
+
+#gallery {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  margin-top: 30px;
+}
+
+#gallery img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+  filter: brightness(55%); 
+  transition: transform 0.5s;
+}
+
+#gallery figcaption, dialog figcaption {
+  background-color: #ECE7DB;
+  /* transform: translateY(-0.433rem); */
+  border-radius: 2px;
+}
+
+#gallery figure {
+  padding: 0 0 1.2rem 0; 
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#gallery figure:hover {
+  opacity: 0.8;
+}
+
+#gallery figure:hover img {
+  transform: scale(1.08);
+}
+
+ dialog {
+  position: fixed;
+  top: 5vw;
+  max-width:95vw;
+  max-height: 90vh;
+  margin: 0 auto;
+  transition: all 0.35s ease-out ;
+}
+
+ dialog img {
+  width: 100%;
+  max-height: 75.5vh;
+  padding: 0.694rem; 
+}
+
+ dialog button {
+  font-family: Changa-Regular ;
+  font-size: 1.2rem;
+  margin: 0.694rem;
+  background-color: #C2C6B3;
+}
+
+dialog form {
+  text-align: right;
+}
+
+ dialog button:hover {
+  background-color: #616f59;
+  cursor: pointer;
+}
+
+footer {
+  background-color:#C2C6B3;
+  width: 100%;
+  background-size: cover;
+  padding: 35px;
+  font-size: 17px;
+  color: #252926;
+  font-family: ElMessiri-Regular;
+  margin-top: 50px;
+}
+
+.footer-socials {
+  transition: opacity 1% ease;
+  position: relative;
+  bottom: 6px;
+}
+
+.footer-socials img {
+  height: 24px;
+}
+
+.footer-socials img:hover {
+  opacity: 0.5;
+}
+
+footer p {
+  max-width: 60%;
+  padding: 5px;
+}
+
+footer button:hover {
+  cursor: pointer;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+}
+
+@media screen and (min-width: 400px) {
+  #gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  #gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@font-face {
+  font-family: ElMessiri-Regular;
+  src: url(../fonts/elmessiri/ElMessiri-Regular.ttf);
+}
+
+@font-face {
+  font-family: GildaDisplay-Regular;
+  src: url(../fonts/gildadisplay/GildaDisplay-Regular.ttf);
+}
+
+@font-face {
+  font-family: Changa-Regular;
+  src: url(../fonts/Changa/Changa-Regular.ttf);
+}

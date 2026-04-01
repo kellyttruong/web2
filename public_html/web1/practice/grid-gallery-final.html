@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+    <style>
+        #grid {
+            display: grid;
+            /*grid-template-columns: 1fr 1fr 1fr; */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px; 
+            text-align: center;
+            padding: 5px;
+            place-items: center;
+
+        }
+        .grid-item {
+            padding: 5px;
+            text-align: center;
+           /* background-color: rgb(188, 191, 169) */
+            
+            
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>grid</h1>
+    <h2>classements</h2>
+    <main id="grid">
+        <figure class="grid-item">
+            <img src="img/pexels-chris-f-38966-11850901.jpg" alt="">
+            <figcaption>garage</figcaption>
+        </figure>
+        <figure class="grid-item">
+            <img src="img/pexels-matreding-33940632.jpg" alt="">
+            <figcaption>bus</figcaption>
+        </figure>
+        <figure class="grid-item">
+            <img src="img/pexels-nathanjhilton-19057468.jpg" alt="">
+            <figcaption>alley</figcaption>
+        </figure> 
+        <figure class="grid-item">
+            <img src="img/pexels-radis-27706759.jpg" alt="">
+            <figcaption>pattern</figcaption></figure>
+        <figure class="grid-item">
+            <img src="img/pexels-samuelgoldberg-17577449.jpg" alt="">
+            <figcaption>graffiti</figcaption>
+        </figure>
+        <figure class="grid-item">
+            <img src="img/pexels-sonny-5843770.jpg" alt="">
+            <figcaption>alleyway</figcaption></figure> 
+        <figure class="grid-item">
+            <img src="img/pexels-yan-bello-622171433-18408513.jpg" alt="">
+            <figcaption>urbex</figcaption>
+        </figure>
+
+    </main>
+    <a href="../index.html">home</a>
+    <a href="index.html">web1</a>
+    
+</body>
+</html>

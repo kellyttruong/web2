@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Demo2 - Selecting HTML</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color:darkolivegreen ;
+        }
+    </style>
+</head>
+<body>
+    <h1>Javascript Demo 2
+    </h1>
+
+    <div id="box"></div>
+    
+    <script>
+        let myBox = document.querySelector('#box')
+        myBox.addEventListener("click", function(){
+            myBox.style.backgroundColor ="blue";
+            myBox.style.borderRadius = "15px"
+        })
+
+        myBox.addEventListener("dbclick", () => {
+            myBox.style.backgroundColor ="green";
+        })
+
+        myBox.addEventListener("mouseenter", ()=> {
+            myBox.style.transform += "translatex(200px)";
+        })
+
+    </script>
+
+</body>
+</html>

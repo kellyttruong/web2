@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(89, 106, 95);
+}
+
+h1 {
+    font-size: 3.44rem;
+}
+a:link {
+    transition: color 1s;
+}
+
+nav a:hover{
+    text-decoration: overline;
+    color: #796ba2;
+}
+ #svg img {
+    transform: scale(1.9);
+ }
