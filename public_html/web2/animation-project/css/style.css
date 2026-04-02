@@ -27,11 +27,14 @@ nav a:hover {
     white-space: nowrap;
     font-weight: bold;
     font-family: AveriaSansLibre-Regular;
+    background-color: #D3C758;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
 }
 
 #text p {
     animation-name: text;
-    animation-duration: 15s;
+    animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-fill-mode: both;
@@ -53,22 +56,30 @@ nav a:hover {
 }
 
 h1 {
-    font-size: 94px;
+    /* font-size: clamp(48px, 8vw, 94px); */
+    font-size: clamp(16px, 8vw, 94px);
     text-align: center;
     color: white;
-    position: relative;
-    top: 215px;
+    /* position: relative;
+    top: 215px; */
     font-family: BagelFatOne-Regular;
+    width: 100%;
 }
 
 h3 {
     font-family: AveriaSansLibre-Regular;
+    color: #ffffff;
+    font-size: 1.44rem;
+}
+
+a {
+    text-decoration: none;
 }
 
 #card {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-self: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
 }
 
 #card-outfit {
@@ -78,7 +89,8 @@ h3 {
     align-content: center;
     text-align: center;
     margin-left: 0px;
-    border-radius: 20px;    
+    border-radius: 20px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);   
 }
 
 #card-outfit:hover {
@@ -96,6 +108,7 @@ h3 {
     align-content: center;
     text-align: center;
     border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);  
 }
 
 #card-hamburger:hover {
@@ -113,6 +126,7 @@ h3 {
     align-content: center;
     text-align: center;
     border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);   
 }
 
 #card-store:hover {
@@ -123,14 +137,28 @@ h3 {
     transition: opacity 500ms;
 }
 
+@media screen and (max-width:950px) {
+  #card {
+    grid-template-columns: 1fr 1fr ;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #card {
+    grid-template-columns: 1fr;
+  }
+}
+
 #outfit-section {
     display:grid;
     grid-template-rows: auto 1fr;
     background-color: #D3C758;
-    padding: 40px ;
+    padding: 20px ;
     margin-top: 50px;
 }
-
+#outfit-section h6 {
+    padding-left: 50px;
+}
 #outfit {
     display: flex;
     width: 100%;
@@ -145,7 +173,7 @@ h3 {
 }
 
  h6 {
-    font-size: 90px;
+    font-size: clamp(2.5rem, 5vw, 3.815rem);
     font-family:BagelFatOne-Regular ;
     color: #ffffff;
 
@@ -201,7 +229,7 @@ h3 {
 }
 
 #hamburger-text h6 {
-    font-size: 90px;
+    font-size: clamp(2.5rem, 5vw, 3.815rem);
     padding: 50px;
     font-family:BagelFatOne-Regular ;
     color: #D3C758;
@@ -209,7 +237,7 @@ h3 {
 }
 
 #hamburger-text p {
-    font-size: 20px;
+    font-size: clamp(14px, 2.5vw, 1.563rem);
     padding-bottom: 50px;
     padding-left: 50px;
     padding-right: 50px;
@@ -223,28 +251,27 @@ h3 {
 
 
 #hamburger img {
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     justify-self: center;
     align-self: center;
 }
-/* @media screen and (min-width: 1145px) {
-      {
-        grid-template-columns: 1fr 1fr;
-    }
-} */
+@media screen and (max-width: 1200px) {
+  #hamburger {
+    grid-template-columns: 1fr;
+  }
+}
 
 #store {
     background-color: #785642;
     display: grid;
-    justify-content: center;
     opacity: 0;
     transform: fadein ;
     transition: all 0.6s ease; 
 }
 
 #store h5 {
-    font-size: 90px;
+    font-size: clamp(2.5rem, 5vw, 3.815rem);
     color: #E0D6C8;
     font-family: BagelFatOne-Regular;
     padding-left: 20px;
@@ -253,6 +280,7 @@ h3 {
 iframe {
     justify-self: center;
     padding: 20px;
+    width: 100%;
 }
 
 #store.is-visible {

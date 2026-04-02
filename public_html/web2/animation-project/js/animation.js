@@ -14,7 +14,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 }, observerOptions);
 
 const thumbnails = document.querySelectorAll(
-  '.outfit-slide, h6, #hamburger, #store'
+  '.outfit-slide, #hamburger, #store'
 );
 
 thumbnails.forEach(thumb => {
