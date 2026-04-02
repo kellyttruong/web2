@@ -14,6 +14,7 @@ nav a {
     color: rgb(111, 90, 71);
     text-decoration: none;
     padding: 30px;
+    font-family: AveriaSansLibre-Regular;
 }
 
 nav a:hover {
@@ -24,6 +25,7 @@ nav a:hover {
     overflow: hidden;
     white-space: nowrap;
     font-weight: bold;
+    font-family: AveriaSansLibre-Regular;
 }
 #text p {
     animation-name: text;
@@ -52,7 +54,10 @@ h1 {
     text-align: center;
     color: white;
     position: relative;
-    top: 230px;
+    top: 215px;
+}
+h3{
+    font-family: AveriaSansLibre-Regular;
 }
 #card{
     display: grid;
@@ -115,7 +120,7 @@ h1 {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scrollbar-width: none;
+    /* scrollbar-width: none; */
     background-color: #D3C758;
     justify-self: center;
     margin-top: 50px;
@@ -158,7 +163,6 @@ h1 {
   }
 }
 
-
 #hamburger {
     display: grid;
     grid-template-columns: 2fr 1.5fr;
@@ -174,10 +178,13 @@ h1 {
 #hamburger-text h6{
     font-size: 50px;
     padding: 50px;
+    font-family:BagelFatOne-Regular ;
 }
+
 #hamburger-text p {
     font-size: 20px;
     padding: 50px;
+    font-family: AveriaSansLibre-Regular;
 }
 
 #hamburger img {
@@ -186,23 +193,35 @@ h1 {
     justify-self: center;
     align-self: center;
 }
+/* @media screen and (min-width: 1145px) {
+      {
+        grid-template-columns: 1fr 1fr;
+    }
+} */
 
 #store {
     background-color: #785642;
 
 }
+
+#store h5 {
+    font-size: 90px;
+    color: #E0D6C8;
+    font-family: BagelFatOne-Regular;
+    padding-left: 20px;
+}
 iframe {
     justify-self: center;
+    padding: 20px;
 }
 footer {
-    background-color:#E0D6C8;
+    background-color:#D3C758;
     width: 100%;
     background-size: cover;
     padding: 35px;
     font-size: 17px;
     color: #252926;
-    font-family: ElMessiri-Regular;
-    margin-top: 50px;
+
 }
 
 .footer-socials {
@@ -222,8 +241,19 @@ footer {
 footer p {
     max-width: 60%;
     padding: 5px;
+    font-family: AveriaSansLibre-Regular;
 }
 
 footer button:hover {
     cursor: pointer;
+}
+
+@font-face {
+  font-family: BagelFatOne-Regular;
+  src: url(../font/bagelfat/BagelFatOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: AveriaSansLibre-Regular;
+  src: url(../font/bagelfat/averia/AveriaSansLibre-Regular.ttf);
 }
