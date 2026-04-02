@@ -1,7 +1,7 @@
 const observerOptions = {
   root: null,
   rootMargin: '0px',
-  threshold: 1  
+  threshold: 0.2  
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
@@ -13,11 +13,12 @@ const observer = new IntersectionObserver((entries, observer) => {
   });
 }, observerOptions);
 
-const thumbnails = document.querySelectorAll('.outfit-slide','#hamburger','#store');
+const thumbnails = document.querySelectorAll(
+  '.outfit-slide, h6, #hamburger, #store'
+);
 
 thumbnails.forEach(thumb => {
   observer.observe(thumb);
 });
-
 
 

@@ -4,6 +4,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 nav {
     text-align: center;
     padding: 15px;
@@ -27,6 +28,7 @@ nav a:hover {
     font-weight: bold;
     font-family: AveriaSansLibre-Regular;
 }
+
 #text p {
     animation-name: text;
     animation-duration: 15s;
@@ -49,21 +51,26 @@ nav a:hover {
     padding: 11.391rem;
     margin-bottom: 50px;
 }
+
 h1 {
-    font-size: 100px;
+    font-size: 94px;
     text-align: center;
     color: white;
     position: relative;
     top: 215px;
+    font-family: BagelFatOne-Regular;
 }
-h3{
+
+h3 {
     font-family: AveriaSansLibre-Regular;
 }
-#card{
+
+#card {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-self: center;
 }
+
 #card-outfit {
     background-color: #D3C758;
     width: 300px;
@@ -73,7 +80,8 @@ h3{
     margin-left: 0px;
     border-radius: 20px;    
 }
-#card-outfit:hover{
+
+#card-outfit:hover {
     transition: transform 0.3s ease;
     transform: rotate(5deg);
     margin-left: -3em;
@@ -89,7 +97,8 @@ h3{
     text-align: center;
     border-radius: 20px;
 }
-#card-hamburger:hover{
+
+#card-hamburger:hover {
     transition: transform 0.3s ease;
     transform: rotate(5deg);
     margin-left: -3em;
@@ -105,7 +114,8 @@ h3{
     text-align: center;
     border-radius: 20px;
 }
-#card-store:hover{
+
+#card-store:hover {
     transform: rotate(5deg);
     /* transition: transform 100ms ease-out; */
     margin-left: -3em ;
@@ -113,32 +123,48 @@ h3{
     transition: opacity 500ms;
 }
 
+#outfit-section {
+    display:grid;
+    grid-template-rows: auto 1fr;
+    background-color: #D3C758;
+    padding: 40px ;
+    margin-top: 50px;
+}
+
 #outfit {
     display: flex;
     width: 100%;
-    height: 300px;
-    overflow-x: auto;
+    height: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     /* scrollbar-width: none; */
-    background-color: #D3C758;
-    justify-self: center;
-    margin-top: 50px;
+    /* background-color: #D3C758; */
+    
+}
+
+ h6 {
+    font-size: 90px;
+    font-family:BagelFatOne-Regular ;
+    color: #ffffff;
+
 }
 .outfit-slide {
     flex-shrink: 0;
     width: calc(100% / 3); 
     aspect-ratio: .8;
-        img {
-        width: 100%;
-    }
     scroll-snap-align: center;
     animation: slide;
     animation-timeline: view(inline);
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.6s ease;
-  }
+        img {
+            width: 100%;
+            height: auto;
+    }
+}
 
 .outfit-slide.is-visible {
   opacity: 1;
@@ -146,10 +172,10 @@ h3{
   justify-self: auto;
 }
 
-#outfit img{
-    width: 250px;
-    height: auto;
-}
+/* #outfit img{
+    width: 100%;
+    height: 100%;
+} */
 @keyframes slide {
   45%, 100% {
     transform: scale(0.5);
@@ -161,31 +187,40 @@ h3{
     border-radius: 4px;
     filter: none;
   }
-}
 
+}
 #hamburger {
     display: grid;
     grid-template-columns: 2fr 1.5fr;
-    height: 500px;
+    min-height: 500px; 
     background-color: #E0D6C8;
-    transform: translateY(50px);
-    transition: all 0.6s ease;
+    transition: all 0.6s ease;   
+    opacity: 0;
+    transform: fadein ;
+    transition: all 0.6s ease; 
 }
-#hamburger.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-#hamburger-text h6{
-    font-size: 50px;
+
+#hamburger-text h6 {
+    font-size: 90px;
     padding: 50px;
     font-family:BagelFatOne-Regular ;
+    color: #D3C758;
+    animation: hamburger;
 }
 
 #hamburger-text p {
     font-size: 20px;
-    padding: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     font-family: AveriaSansLibre-Regular;
+
 }
+#hamburger.is-visible {
+    opacity: 1;
+    transform: translateY(0);   
+} 
+
 
 #hamburger img {
     width: 500px;
@@ -201,7 +236,11 @@ h3{
 
 #store {
     background-color: #785642;
-
+    display: grid;
+    justify-content: center;
+    opacity: 0;
+    transform: fadein ;
+    transition: all 0.6s ease; 
 }
 
 #store h5 {
@@ -210,10 +249,18 @@ h3{
     font-family: BagelFatOne-Regular;
     padding-left: 20px;
 }
+
 iframe {
     justify-self: center;
     padding: 20px;
 }
+
+#store.is-visible {
+    opacity: 1;
+    transform: translateY(0);   
+} 
+
+
 footer {
     background-color:#D3C758;
     width: 100%;
