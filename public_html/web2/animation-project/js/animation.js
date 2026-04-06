@@ -21,7 +21,11 @@ thumbnails.forEach(thumb => {
   observer.observe(thumb);
 });
 
-$(window),on('load', function() {
-  $('.loader').fadeOut('slow');
-})
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".container");
+  loader.classList.add("fade-out");
 
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 1000);
+});
