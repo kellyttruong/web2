@@ -21,4 +21,7 @@ thumbnails.forEach(thumb => {
   observer.observe(thumb);
 });
 
+$(window),on('load', function() {
+  $('.loader').fadeOut('slow');
+})
 
