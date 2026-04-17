@@ -169,9 +169,6 @@ footer p {
     font-family: Outfit-Regular;
 }
 
-footer button:hover {
-    cursor: pointer;
-}
 @media screen and (max-width: 365px) {
     nav {
         width: 100%;
