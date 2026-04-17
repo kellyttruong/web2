@@ -5,7 +5,19 @@
     scroll-behavior: smooth;
 }
 
-header {
+nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+}
 
-    
+@font-face {
+    font-family: Imperial Script;
+    src: url(../font/imperial\ script/ImperialScript.ttf);
+}
+
+@font-face {
+    font-family: Outfit;
+    src: url(../font/outfit/Outfit-Regular.ttf);
 }
