@@ -13,6 +13,10 @@ nav {
     padding: 1rem;
     justify-content: center;
     align-items: center;
+    background-color: #EFE6DD;
+    position: sticky;
+    top: 0;
+    outline: #000000 solid 1px;
 }
 
 nav a {
@@ -31,6 +35,7 @@ nav a:hover {
 }
 
 header {
+    height: 800px;
     font-family: ImperialScript;
     display: grid;
     grid-template-columns: repeat(2, 1fr);   
@@ -38,9 +43,13 @@ header {
 
 .h1 {
 
-    width: 700px;
+    width: 850px;
     height: auto;
     /* font-size: clamp(2rem, 3vw, 4rem); */
+    align-self: center;
+    position: relative;
+    left: 300px;
+    top: -40px;
 }
 
 .head-img {
@@ -53,6 +62,116 @@ body {
     background-color:#EFE6DD ;
 }
 
+#about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 130px;
+    align-items: center;
+}
+#about img {
+    width: 530px;
+    height: auto;
+    justify-self: center;
+}
+
+#about h3 {
+    font-family: ImperialScript;
+    font-size: 7rem;
+    color: #711E1B;
+    font-weight: lighter;
+}
+.what-are-they {
+    padding: 30px;
+    /* align-self: end; */
+}
+.what-are-they hr {
+   background-color: #711E1B;
+   height: 2.3px;
+   width: 520px;
+}
+
+.what-are-they p{
+    padding: 20px 50px 0 0;
+    font-family: Outfit-Regular;
+
+}
+#flowers {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    padding: 90px;
+} 
+
+#flowers .subtitle h3 {
+    font-family: ImperialScript;
+    font-size: 8rem;
+    color: #711E1B;
+    font-weight: lighter;
+}
+
+#flowers .subtitle hr {
+    background-color: #711E1B;
+    height: 2.3px;
+    width: 660px;
+}
+.subtitle {
+    padding: 30px;
+}
+
+#common {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+#common h3 {
+    font-family: ImperialScript;
+    font-size: 7rem;
+    color: #711E1B;
+    font-weight: lighter;
+    text-align: center;
+}
+
+#common hr {
+    justify-self: center;
+    height: 2.3px;
+    width: 570px;
+    background-color: #711E1B;
+}
+
+footer {
+    background-color:#711E1B;
+    width: 100%;
+    background-size: cover;
+    padding: 35px;
+    font-size: 17px;
+    color: #ffffff;
+
+}
+
+.footer-socials {
+    transition: opacity 1% ease;
+    position: relative;
+    bottom: 6px;
+}
+
+.footer-socials img {
+    height: 24px;
+}
+
+.footer-socials img:hover {
+    opacity: 0.5;
+}
+
+footer p {
+    max-width: 60%;
+    padding: 5px;
+    font-family: Outfit-Regular;
+}
+
+footer button:hover {
+    cursor: pointer;
+}
 @media screen and (max-width: 365px) {
     nav {
         width: 100%;
