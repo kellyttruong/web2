@@ -144,7 +144,7 @@ body {
   padding: 30px;
   display: grid;
   margin-top: 30px;
-  justify-items: center;
+  justify-content: center;
 }
 
 .gallery img {
@@ -194,11 +194,18 @@ footer p {
     font-family: Outfit-Regular;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1000px) {
     .gallery{
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+@media screen and (max-width: 700px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 
 @media screen and (max-width: 365px) {
     nav {
