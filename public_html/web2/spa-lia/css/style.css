@@ -17,6 +17,7 @@ nav {
     position: sticky;
     top: 0;
     outline: #000000 solid 1px;
+    z-index: 9999;
 }
 
 nav a {
@@ -39,6 +40,7 @@ header {
     font-family: ImperialScript;
     display: grid;
     grid-template-columns: repeat(2, 1fr);   
+    z-index: 1;
 }
 
 .h1 {
