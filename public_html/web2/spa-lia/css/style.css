@@ -121,8 +121,7 @@ body {
 }
 
 #common {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    padding: 100px;
 
 }
 
@@ -139,6 +138,30 @@ body {
     height: 2.3px;
     width: 570px;
     background-color: #711E1B;
+}
+
+.gallery {
+  padding: 30px;
+  display: grid;
+  margin-top: 30px;
+  justify-items: center;
+}
+
+.gallery img {
+  width: 450px;
+  height: auto;
+  aspect-ratio: 4/5;
+}
+
+.gallery figure {
+  padding: 0 0 1.2rem 0; 
+}
+
+.gallery figcaption{
+    font-family: ImperialScript;
+    color: #711E1B;
+    font-size: 2rem;
+    text-align: center;
 }
 
 footer {
@@ -169,6 +192,12 @@ footer p {
     max-width: 60%;
     padding: 5px;
     font-family: Outfit-Regular;
+}
+
+@media screen and (min-width: 900px) {
+    .gallery{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media screen and (max-width: 365px) {
