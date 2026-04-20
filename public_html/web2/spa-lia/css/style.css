@@ -67,7 +67,6 @@ body {
 #about {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 130px;
     align-items: center;
 }
 #about img {
@@ -81,6 +80,7 @@ body {
     font-size: 7rem;
     color: #711E1B;
     font-weight: lighter;
+  font-size: clamp(20px, 10vw, 100px);
 }
 .what-are-they {
     padding: 30px;
@@ -192,18 +192,35 @@ footer p {
     max-width: 60%;
     padding: 5px;
     font-family: Outfit-Regular;
+
 }
 
-@media screen and (min-width: 1000px) {
-    .gallery{
-        grid-template-columns: repeat(3, 1fr);
+@media screen and (max-width: 600px) {
+    #about img {
+        width: clamp(50px, 90vw, 530px);
     }
+    
+}
+@media screen and (max-width: 1200px) {
+  #about {
+    grid-template-columns: 1fr;
+    height: auto;
+    width: 100%;
+  }
 }
 
-@media screen and (max-width: 700px) {
-    .gallery {
-        grid-template-columns: 1fr 1fr;
-    }
+@media screen and (min-width: 900px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+        width: 100%;
+        height: auto;
+  }
+}
+
+@media screen and (min-width: 1270px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 
