@@ -41,6 +41,8 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);   
     z-index: 1;
+    /* margin-bottom: 200px; */
+    margin-top: 80px;
 }
 
 .h1 {
@@ -50,14 +52,15 @@ header {
     /* font-size: clamp(2rem, 3vw, 4rem); */
     align-self: center;
     position: relative;
-    left: 300px;
-    top: -40px;
+    right: 300px;
+    top: 40px;
 }
 
 .head-img {
     padding-top: 50px;
     width: auto;
     height: 240px;
+    justify-self: end;
 }
 
 body {
@@ -68,9 +71,11 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    padding-top: 180px;
+    padding-bottom: 10px;
 }
 #about img {
-    width: 530px;
+    width: 600px;
     height: auto;
     justify-self: center;
 }
@@ -93,22 +98,34 @@ body {
 }
 
 .what-are-they p{
-    padding: 20px 50px 0 0;
+    padding: 40px 150px 0 0;
     font-family: Outfit-Regular;
 
 }
 #flowers {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* display: grid;
+    grid-template-rows: 1fr 1fr; */
     gap: 1rem;
-    padding: 90px;
+    padding: 100px;
 } 
+ .information {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 50px;
+
+}
+.information figcaption {
+    font-family: ImperialScript;
+    color:#711E1B;
+    font-size: 1.44rem;
+}
 
 #flowers .subtitle h3 {
     font-family: ImperialScript;
     font-size: 8rem;
     color: #711E1B;
     font-weight: lighter;
+    font-size: clamp(20px, 10vw, 100px);
 }
 
 #flowers .subtitle hr {
@@ -118,6 +135,41 @@ body {
 }
 .subtitle {
     padding: 30px;
+}
+#flowers img {
+    width: 430px;
+    height: auto;
+}
+
+ dialog {
+  position: fixed;
+  top: 5vw;
+  max-width:95vw;
+  max-height: 90vh;
+  margin: 0 auto;
+  transition: all 0.35s ease-out ;
+}
+
+ dialog img {
+  width: 100%;
+  max-height: 75.5vh;
+  padding: 0.694rem; 
+}
+
+ dialog button {
+  font-family: Changa-Regular ;
+  font-size: 1.2rem;
+  margin: 0.694rem;
+  background-color: #C2C6B3;
+}
+
+dialog form {
+  text-align: right;
+}
+
+ dialog button:hover {
+  background-color: #616f59;
+  cursor: pointer;
 }
 
 #common {
@@ -145,6 +197,7 @@ body {
   display: grid;
   margin-top: 30px;
   justify-content: center;
+  justify-items: center;
 }
 
 .gallery img {
@@ -194,10 +247,38 @@ footer p {
     font-family: Outfit-Regular;
 
 }
+@media screen and (max-width:800px){
+    #flowers {
+        grid-template-rows: 1fr;
+    }   
+    
+}
+
+@media screen and (max-width: 1130px) {
+    header{
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+    .head-img {
+        width: clamp(50px, 90vw, 530px);
+        height: auto;
+        justify-self: center;
+    }
+        .h1 {
+        width: clamp(50px, 90vw, 850px);
+        height: auto;
+        align-self: center;
+        position: relative;
+        right: 0;
+        top: 0;
+        }
+}
 
 @media screen and (max-width: 600px) {
-    #about img {
-        width: clamp(50px, 90vw, 530px);
+    #about {
+        grid-template-columns: 1fr;
+        height: auto;
+        width: 100%;
     }
     
 }
@@ -231,7 +312,7 @@ footer p {
     }
 }
 
-@media screen and (max-width: 1300px) {
+/* @media screen and (max-width: 1300px) {
 
     .h1 {
         width: 100%;
@@ -242,7 +323,7 @@ footer p {
         width: 100%;
         height: auto;
     }
-}
+} */
 
 @media screen and (max-width: 450px) {
     header {
