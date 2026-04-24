@@ -102,18 +102,49 @@ body {
     font-family: Outfit-Regular;
 
 }
+
 #flowers {
     /* display: grid;
     grid-template-rows: 1fr 1fr; */
     gap: 1rem;
     padding: 100px;
+    justify-content: center;
+    align-items: center;
 } 
+button {
+    background-color: #EFE6DD;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    width: 50px;
+    height: fit-content;
+    justify-content:center ;
+    opacity: 1;
+}
+
+button:hover
+button:focus {
+    opacity: 0.2;
+}
+.left {
+    left:0;
+}
+
+.right {
+    right: 0;
+}
  .information {
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(4, 1fr); */
+    display: grid;
+    justify-content: center;
+    scroll-snap-type: x mandatory;
     padding: 50px;
+    list-style: none;
+    overflow-x: auto;
+    width: 100%;
 
 }
+
 .information figcaption {
     font-family: ImperialScript;
     color:#711E1B;
@@ -140,6 +171,11 @@ body {
     width: 430px;
     height: auto;
 }
+#flowers figcaption, dialog figcaption {
+  background-color: #ECE7DB;
+  /* transform: translateY(-0.433rem); */
+  border-radius: 2px;
+}
 
  dialog {
   position: fixed;
@@ -157,10 +193,10 @@ body {
 }
 
  dialog button {
-  font-family: Changa-Regular ;
   font-size: 1.2rem;
   margin: 0.694rem;
-  background-color: #C2C6B3;
+  background-color: #711E1B;
+  color: #ffffff;
 }
 
 dialog form {
