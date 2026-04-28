@@ -18,5 +18,36 @@ let thumbImg = event.target.closest('figure').querySelector('img').src;
     modal.querySelector('img').src = 'img/flowers/1600' + thumbImg;
     modal.showModal(); 
 }
+// loader
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".container");
+  loader.classList.add("fade-out");
+
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 1000);
+});
+
+// // reveal on scroll
+// document.addEventListener("DOMContentLoaded", () => {
+//   const revealElements = document.querySelectorAll('.reveal');
+
+//   const toggleVisibility = () => {
+//       revealElements.forEach((el) => {
+//           const rect = el.getBoundingClientRect();
+
+//           // check if the element is in the viewport
+//           if (rect.top < window.innerHeight && rect.bottom > 0) {
+//               el.classList.add('active'); 
+//           } else {
+//               el.classList.remove('active'); 
+//           }
+//       });
+//   };
+
+//   // trigger on scroll and load
+//   window.addEventListener('scroll', toggleVisibility);
+//   toggleVisibility();
+// });
 
 // carousel
