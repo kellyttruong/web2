@@ -164,18 +164,17 @@ body {
     margin: 20px 40px;
 } 
 button {
-    display: grid;
     place-items: center;
-    background-color: #EFE6DD;
+    background-color: #711E1B;
     border: none;
     cursor: pointer;
     font-size: 2rem;
     width: 48px;
     height: 48px;
-    justify-content:center ;
     opacity: 1;
     position: absolute;
-    margin: 16px 40px;
+    border-radius: 20%;
+    color: #ECE7DB;
 }
 
 button:hover
@@ -185,11 +184,13 @@ button:focus {
 .left {
     justify-self: start;
     align-self: center;
+    left: 50px;
 }
 
 .right {
     justify-self: end;
     align-self: center;
+    right: 50px;
 }
  .information {
     /* grid-template-columns: repeat(4, 1fr); */
@@ -347,6 +348,10 @@ footer p {
     }   
     
 }
+
+/* @media screen and () {
+    
+} */
 
 @media screen and (max-width: 1130px) {
     header{
