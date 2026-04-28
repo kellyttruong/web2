@@ -155,22 +155,27 @@ body {
 }
 
 #flowers {
-    /* display: grid;
-    grid-template-rows: 1fr 1fr; */
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     gap: 1rem;
     padding: 100px;
     justify-content: center;
     align-items: center;
+    margin: 20px 40px;
 } 
 button {
+    display: grid;
+    place-items: center;
     background-color: #EFE6DD;
     border: none;
     cursor: pointer;
     font-size: 2rem;
-    width: 50px;
-    height: fit-content;
+    width: 48px;
+    height: 48px;
     justify-content:center ;
     opacity: 1;
+    position: absolute;
+    margin: 16px 40px;
 }
 
 button:hover
@@ -178,21 +183,23 @@ button:focus {
     opacity: 0.2;
 }
 .left {
-    left:0;
+    justify-self: start;
+    align-self: center;
 }
 
 .right {
-    right: 0;
+    justify-self: end;
+    align-self: center;
 }
  .information {
     /* grid-template-columns: repeat(4, 1fr); */
     display: grid;
-    justify-content: center;
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
     scroll-snap-type: x mandatory;
-    padding: 50px;
-    list-style: none;
     overflow-x: auto;
-    width: 100%;
+    gap: 60px;
+    padding: 80px 0 80px 0;
 
 }
 

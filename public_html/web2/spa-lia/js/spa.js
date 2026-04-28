@@ -51,3 +51,10 @@ window.addEventListener("load", () => {
 // });
 
 // carousel
+const carousel = document.querySelector('.information');
+const slide =document.querySelector('.information figure');
+
+function handleCarouselMove(positive = true) {
+  const slideWidth = slide.clientWidth;
+  carousel.scrollLeft = positive ? carousel.scrollLeft + slideWidth : carousel.scrollLeft - slideWidth;
+}
