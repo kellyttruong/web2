@@ -4,6 +4,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 .container {
     width: 70px;
     height: 35px;
@@ -11,7 +12,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #ECE7DB;
+    background-color: #EFE6DD;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +20,7 @@
     opacity: 1;
     transition: opacity 1s ease;
 }
+
 .container.fade-out {
     opacity: 0;
     pointer-events: none;
@@ -37,6 +39,7 @@
     animation: rotate 3s ease-in-out infinite;
     transform: rotate(-200deg);
 }
+
 @keyframes rotate {
     0% {
         border-width: 10px;
@@ -61,22 +64,23 @@
         transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 .observe.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
 nav {
     height: 80px;
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 5rem;
+    grid-template-columns: repeat(4, auto);
     padding: 1rem;
     justify-content: center;
     align-items: center;
     background-color: #EFE6DD;
     position: sticky;
     top: 0;
-    outline: #000000 solid 1px;
+    outline: #0E1911 solid 1px;
     z-index: 999;
     gap: clamp(1rem, 5vw, 5rem);
 }
@@ -84,7 +88,7 @@ nav {
 nav a {
     font-family: Outfit-Regular;
     font-size: 1.2em;
-    color: #000000;
+    color: #0E1911;
     text-decoration: none;
 }
 
@@ -140,8 +144,8 @@ body {
     padding: clamp(40px, 8vw, 180px) 1rem;
     gap: 2rem;
 }
+
 #about img {
-    width: 600px;
     height: auto;
     justify-self: center;
     width: clamp(200px, 80vw, 600px);
@@ -152,12 +156,14 @@ body {
     font-size: 7rem;
     color: #711E1B;
     font-weight: lighter;
-  font-size: clamp(20px, 10vw, 100px);
+    font-size: clamp(20px, 10vw, 100px);
 }
+
 .what-are-they {
     padding: 30px;
     /* align-self: end; */
 }
+
 .what-are-they hr {
     background-color: #711E1B;
     height: 2.3px;
@@ -176,30 +182,30 @@ body {
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    margin: 40px 80px;
-    position: relative;
+    margin: 40px 80px; 
+    /* position: relative; */
+    /* padding: 80px; */
 } 
+
 button {
     place-items: center;
     background-color: #711E1B;
     border: none;
     cursor: pointer;
-    font-size: 2rem;
-    width: 48px;
-    height: 48px;
     opacity: 1;
     position: absolute;
     border-radius: 20%;
-    color: #ECE7DB;
+    color: #EFE6DD;
     width: clamp(35px, 8vw, 48px);
     height: clamp(35px, 8vw, 48px);
     font-size: clamp(1rem, 4vw, 2rem);
 }
 
-button:hover
+button:hover,
 button:focus {
     opacity: 0.2;
 }
+
 .left {
     justify-self: start;
     align-self: center;
@@ -211,6 +217,7 @@ button:focus {
     align-self: center;
     right: 50px;
 }
+
  .information {
     display: flex;
     flex-wrap: nowrap;
@@ -267,18 +274,19 @@ button:focus {
     width: clamp(150px, 60%, 660px);
     margin: 0 auto;
 }
+
 .subtitle {
     padding: 30px;
 }
+
 #flowers img {
-    width: 430px;
     height: auto;
     width: clamp(200px, 80vw, 430px);
 }
-#flowers figcaption
+
+#flowers figcaption {
  /* dialog figcaption */
-  {
-  background-color: #ECE7DB;
+  background-color: #EFE6DD;
   /* transform: translateY(-0.433rem); */
   border-radius: 2px;
 }
@@ -333,7 +341,7 @@ dialog form {
 }
 
 .gallery {
-    padding: 30px;
+    padding: 55px;
     display: grid;
     margin-top: 30px;
     justify-content: center;
@@ -345,7 +353,8 @@ dialog form {
 .gallery img {
     width: 100%;
     height: auto;
-    aspect-ratio: 4/5;
+    aspect-ratio: 4/4;
+    object-fit: cover;
 }
 
 
@@ -362,7 +371,7 @@ footer {
     background-size: cover;
     padding: 35px;
     font-size: 17px;
-    color: #ffffff;
+    color: #EFE6DD;
 }
 
 .footer-socials {
@@ -373,28 +382,36 @@ footer {
 
 .footer-socials img {
     height: 24px;
+    width: auto;
 }
 
 .footer-socials img:hover {
     opacity: 0.5;
+}
+ 
+footer .credit {
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
 
 footer p {
     max-width: 60%;
     padding: 5px;
     font-family: Outfit-Regular;
-
+    align-content: center;
 }
+
+footer img {
+    width: 50px;
+    height: auto;
+    justify-self: end;
+}
+
 @media screen and (max-width:800px){
     #flowers {
         grid-template-rows: 1fr;
-    }   
-    
+    }    
 }
-
-/* @media screen and () {
-    
-} */
 
 @media screen and (max-width: 1130px) {
     header{
@@ -422,8 +439,8 @@ footer p {
         height: auto;
         width: 100%;
     }
-    
 }
+
 @media screen and (max-width: 1200px) {
   #about {
     grid-template-columns: 1fr;
