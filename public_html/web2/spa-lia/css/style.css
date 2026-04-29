@@ -34,7 +34,8 @@
     border-bottom-color: transparent;
     border-radius: 50%;
     box-sizing: border-box;
-    animation: rotate 1.5s linear infinite;
+    animation: rotate 3s ease-in-out infinite;
+    transform: rotate(-200deg);
 }
 @keyframes rotate {
     0% {
@@ -55,6 +56,15 @@
     }
 }
 
+.observe {
+    opacity: 0;
+        transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.observe.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 nav {
     height: 80px;
     display: grid;
@@ -164,10 +174,9 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: 1rem;
-    padding: 100px;
     justify-content: center;
     align-items: center;
-    margin: 20px 40px;
+    margin: 40px 80px;
     position: relative;
 } 
 button {
@@ -203,23 +212,32 @@ button:focus {
     right: 50px;
 }
  .information {
-    /* grid-template-columns: repeat(4, 1fr); */
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: clamp(250px, 60%, 400px);
+    display: flex;
+    flex-wrap: nowrap;
     scroll-snap-type: x mandatory;
     overflow-x: auto;
     gap: 20px;
-    padding: 80px 0 80px 0;
-    scroll-snap-align: center;;
+    padding: 80px 0;
+    scroll-padding: 20px;
 
 }
 
-/* @media screen and (min-width: 700px){
-    .information {
-        grid-auto-columns: 40% ;
+.information figure {
+    flex: 0 0 10%;
+    scroll-snap-align: center;
+}
+
+  @media screen and (min-width: 700px){
+    .information figure {
+        flex: 1 0 45%;
     }
-} */
+}
+@media screen and (min-width: 1200px){
+    .information figure {
+        flex: 1 0 30%;
+    }
+    
+}
 
 .information figcaption {
     font-family: ImperialScript;
@@ -237,16 +255,17 @@ button:focus {
 
 #flowers .subtitle h3 {
     font-family: ImperialScript;
-    font-size: 8rem;
     color: #711E1B;
     font-weight: lighter;
-    font-size: clamp(20px, 10vw, 100px);
+    font-size: clamp(2rem, 8vw, 6rem);
+    text-align: center;
 }
 
 #flowers .subtitle hr {
     background-color: #711E1B;
     height: 2.3px;
-    width: 660px;
+    width: clamp(150px, 60%, 660px);
+    margin: 0 auto;
 }
 .subtitle {
     padding: 30px;
@@ -256,13 +275,15 @@ button:focus {
     height: auto;
     width: clamp(200px, 80vw, 430px);
 }
-#flowers figcaption, dialog figcaption {
+#flowers figcaption
+ /* dialog figcaption */
+  {
   background-color: #ECE7DB;
   /* transform: translateY(-0.433rem); */
   border-radius: 2px;
 }
 
- dialog {
+ /* dialog {
   position: fixed;
   top: 5vw;
   max-width:95vw;
@@ -290,16 +311,15 @@ dialog form {
 
 .information .desc{
     display: none;
-}
+} */
 
 #common {
     padding: 100px;
-
 }
 
 #common h3 {
     font-family: ImperialScript;
-    font-size: 7rem;
+    font-size: clamp(4rem, 8vw, 7rem);
     color: #711E1B;
     font-weight: lighter;
     text-align: center;
@@ -308,7 +328,7 @@ dialog form {
 #common hr {
     justify-self: center;
     height: 2.3px;
-    width: 570px;
+    width: clamp(200px, 50%, 570px);
     background-color: #711E1B;
 }
 
@@ -319,19 +339,15 @@ dialog form {
     justify-content: center;
     justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
+    gap: 20px;
 }
 
 .gallery img {
-    width: 450px;
+    width: 100%;
     height: auto;
     aspect-ratio: 4/5;
-    width: clamp(200px, 90vw, 450px);
 }
 
-.gallery figure {
-  padding: 0 0 1.2rem 0; 
-}
 
 .gallery figcaption{
     font-family: ImperialScript;
@@ -347,7 +363,6 @@ footer {
     padding: 35px;
     font-size: 17px;
     color: #ffffff;
-
 }
 
 .footer-socials {
