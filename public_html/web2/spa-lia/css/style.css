@@ -59,7 +59,7 @@
 nav {
     height: 80px;
     display: grid;
-    grid-template-columns: repeat(3, min-content);
+    grid-template-columns: repeat(3, auto);
     gap: 5rem;
     padding: 1rem;
     justify-content: center;
@@ -69,6 +69,7 @@ nav {
     top: 0;
     outline: #000000 solid 1px;
     z-index: 999;
+    gap: clamp(1rem, 5vw, 5rem);
 }
 
 nav a {
@@ -87,20 +88,23 @@ nav a:hover {
 }
 
 header {
-    height: 800px;
+    /* height: 800px; */
     font-family: ImperialScript;
     display: grid;
     grid-template-columns: repeat(2, 1fr);   
     z-index: 1;
     /* margin-bottom: 200px; */
     margin-top: 80px;
+    min-height: 100vh;
+    height: auto;
+    padding: 2rem 1rem;
 }
 
 .h1 {
 
     width: 850px;
     height: auto;
-    /* font-size: clamp(2rem, 3vw, 4rem); */
+    width: clamp(250px, 80vw, 850px);
     align-self: center;
     position: relative;
     right: 300px;
@@ -120,7 +124,7 @@ body {
 
 #about {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: center;
     padding-top: 180px;
     padding-bottom: 10px;
@@ -129,6 +133,7 @@ body {
     width: 600px;
     height: auto;
     justify-self: center;
+    width: clamp(200px, 80vw, 600px);
 }
 
 #about h3 {
@@ -149,7 +154,7 @@ body {
 }
 
 .what-are-they p{
-    padding: 40px 150px 0 0;
+    padding: 20px;
     font-family: Outfit-Regular;
 
 }
@@ -175,6 +180,9 @@ button {
     position: absolute;
     border-radius: 20%;
     color: #ECE7DB;
+    width: clamp(35px, 8vw, 48px);
+    height: clamp(35px, 8vw, 48px);
+    font-size: clamp(1rem, 4vw, 2rem);
 }
 
 button:hover
@@ -199,15 +207,29 @@ button:focus {
     grid-auto-columns: auto;
     scroll-snap-type: x mandatory;
     overflow-x: auto;
-    gap: 60px;
+    gap: 20px;
     padding: 80px 0 80px 0;
 
 }
+
+/* @media screen and (min-width: 700px){
+    .information {
+        grid-auto-columns: 40% ;
+    }
+} */
 
 .information figcaption {
     font-family: ImperialScript;
     color:#711E1B;
     font-size: 1.44rem;
+}
+
+@media screen and (max-width: 600px) {
+    .information img {
+        width: 100%;
+        height: auto;
+    }
+    
 }
 
 #flowers .subtitle h3 {
@@ -229,6 +251,7 @@ button:focus {
 #flowers img {
     width: 430px;
     height: auto;
+    width: clamp(200px, 80vw, 430px);
 }
 #flowers figcaption, dialog figcaption {
   background-color: #ECE7DB;
@@ -245,11 +268,6 @@ button:focus {
   transition: all 0.35s ease-out ;
 }
 
- dialog img {
-  width: 100%;
-  max-height: 75.5vh;
-  padding: 0.694rem; 
-}
 
  dialog button {
   font-size: 1.2rem;
@@ -265,6 +283,10 @@ dialog form {
  dialog button:hover {
   background-color: #616f59;
   cursor: pointer;
+}
+
+.information .desc{
+    display: none;
 }
 
 #common {
@@ -293,12 +315,14 @@ dialog form {
   margin-top: 30px;
   justify-content: center;
   justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .gallery img {
-  width: 450px;
-  height: auto;
-  aspect-ratio: 4/5;
+    width: 450px;
+    height: auto;
+    aspect-ratio: 4/5;
+    width: clamp(200px, 90vw, 450px);
 }
 
 .gallery figure {
@@ -389,7 +413,7 @@ footer p {
   }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (max-width: 1200px) {
   .gallery {
     grid-template-columns: 1fr 1fr;
         width: 100%;

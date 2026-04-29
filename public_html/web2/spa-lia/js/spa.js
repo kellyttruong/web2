@@ -11,7 +11,7 @@ thumbnails.forEach(thumb => {
 })
 
 function showModal(event){
-let thumbImg = event.target.closest('figure').querySelector('img').src;
+let thumbImg = event.target.closest('.information figure').querySelector('img').src;
     thumbImg = thumbImg.substring(thumbImg.lastIndexOf('/'));
 
     modal.querySelector('figure').innerHTML = event.target.closest('figure').innerHTML;
