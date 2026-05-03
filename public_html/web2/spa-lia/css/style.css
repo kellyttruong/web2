@@ -285,41 +285,75 @@ button:focus {
 }
 
 #flowers figcaption {
- /* dialog figcaption */
-  background-color: #EFE6DD;
-  /* transform: translateY(-0.433rem); */
-  border-radius: 2px;
+    /* dialog figcaption */
+    background-color: #EFE6DD;
+    /* transform: translateY(-0.433rem); */
+    border-radius: 2px;
 }
 
- /* dialog {
-  position: fixed;
-  top: 5vw;
-  max-width:95vw;
-  max-height: 90vh;
-  margin: 0 auto;
-  transition: all 0.35s ease-out ;
+ dialog {
+    width: clamp(320px, 90vw, 600px);
+    max-width:90vw;
+    /* max-height: 90vh; */
+    margin: auto;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden; 
 }
 
+dialog::backdrop {
+    background-color: rgba(14, 25, 17, 0.7);
+}
 
  dialog button {
-  font-size: 1.2rem;
-  margin: 0.694rem;
-  background-color: #711E1B;
-  color: #ffffff;
+    font-size: 1.2rem;
+    margin: 0.694rem;
+    background-color: #711E1B;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    
+}
+
+
+ dialog button:hover {
+    background-color: #0E1911;
+    cursor: pointer;
+}
+
+dialog figure {
+    margin: 0;
+    padding: 0;
 }
 
 dialog form {
-  text-align: right;
+    text-align: center;
 }
 
- dialog button:hover {
-  background-color: #616f59;
-  cursor: pointer;
+dialog img {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    object-fit: cover;
+    /* display: block; */
+
 }
 
-.information .desc{
-    display: none;
-} */
+dialog figcaption {
+    padding: 1rem;
+}
+
+dialog h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+dialog p {
+    color: #0E1911;
+    margin: 0;
+
+}
 
 #common {
     padding: 100px;
