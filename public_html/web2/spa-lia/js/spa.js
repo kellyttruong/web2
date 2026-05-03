@@ -1,23 +1,29 @@
 // console.log('spa.js is loaded');
 
 // modal
-// const thumbnails = document.querySelectorAll('figure');
+  const thumbnails = document.querySelectorAll('.information figure');
+  const modal = document.querySelector('dialog');
 
-// const modal = document.querySelector('dialog');
+  figure.forEach(thumb => {
+  figure.addEventListener('click', showModal);
+ })
 
-// thumbnails.forEach(thumb => {
-//     thumb.addEventListener('click', showModal);
+  function showModal(event){
+  const figure = event.currentTarget;
 
-// })
+  const img = figure.querySelector('img').src;
+  const title = figure.querySelector('figcaption').textContent;
+  const desc = figure.dataset.desc;
 
-// function showModal(event){
-// let thumbImg = event.target.closest('.information figure').querySelector('img').src;
-//     thumbImg = thumbImg.substring(thumbImg.lastIndexOf('/'));
-
-//     modal.querySelector('figure').innerHTML = event.target.closest('figure').innerHTML;
-//     modal.querySelector('img').src = 'img/flowers/1600' + thumbImg;
-//     modal.showModal(); 
-// }
+  modal.querySelector('img').src = img;
+  modal.querySelector('h2').textContent = title;
+  modal.querySelector('p').textContent = desc;
+   
+  modal.showModal(); 
+}
+modal.addEventListener('click', function(e) {
+  if (e.target ===modal) modal.close
+})
 
 
 // // loader
