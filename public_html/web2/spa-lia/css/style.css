@@ -284,6 +284,10 @@ button:focus {
     width: clamp(200px, 80vw, 430px);
 }
 
+#flowers figure img:hover {
+    cursor: pointer;
+}
+
 #flowers figcaption {
     /* dialog figcaption */
     background-color: #EFE6DD;
@@ -308,7 +312,6 @@ dialog::backdrop {
 
  dialog button {
     font-size: 1.2rem;
-    margin: 0.694rem;
     background-color: #711E1B;
     color: #ffffff;
     border: none;
@@ -439,6 +442,18 @@ footer img {
     width: 50px;
     height: auto;
     justify-self: end;
+}
+
+.home a{
+    color: #EFE6DD;
+    text-decoration: none;
+    font-size: .95rem;
+
+}
+
+.home a:hover {
+    text-decoration: line-through;
+    color: #0E1911;
 }
 
 @media screen and (max-width:800px){
