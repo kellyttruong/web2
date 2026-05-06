@@ -99,6 +99,29 @@ nav a:link {
 nav a:hover {
     color: #711E1B;
 }
+#text {
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    font-family: ImperialScript;
+    background-color: #711E1B;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    color: #EFE6DD;
+}
+
+#text p {
+    animation-name: text;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+@keyframes text {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(100%);}
+}
 
 header {
     /* height: 800px; */
