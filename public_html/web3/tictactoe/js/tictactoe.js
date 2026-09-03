@@ -25,11 +25,11 @@ for (let boite of cases) {
     boite.addEventListener("click",function () {
         if (boite.active) {
             if (joueurX) { //tour du joueur X
-                boite.innerText = "X";
+                boite.style.backroundImage = "url('')";
                 joueurX = false;
             }
             else { //tour du jour O
-                boite.innerText = "O";
+                boite.style.backroundImage = "url('')";
                 joueurX = true;
             }
             boite.active = false;
