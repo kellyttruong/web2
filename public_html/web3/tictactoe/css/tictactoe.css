@@ -16,9 +16,9 @@ h1 {
 }
 body {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    background-image: url("../img/bg1.svg");
+    /* background-image: url("../img/bg1.svg"); */
     overflow: hidden;
     background-size:cover;
 
@@ -41,10 +41,10 @@ body {
 #friteuse::before {
     content: "";
     position: absolute;
-    top:0.5em;
+    top:-3em;
     left: 41%;
-    width: 21rem;
-    height: 19rem;
+    width: 26rem;
+    height: 31rem;
     background-image: url("../img/friteuse.svg");
     background-size: contain;
     background-repeat: no-repeat;
