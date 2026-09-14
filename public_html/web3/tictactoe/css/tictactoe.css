@@ -7,13 +7,21 @@
 header {
     text-align: center;
     padding: 4em;
+    grid-column: 2;
 }
 
+h1 {
+    font-size: 5rem;
+    color: rgb(0, 0, 0);
+}
 body {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     background-image: url("../img/bg.svg");
     overflow: hidden;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size:cover;
+
 }
 #friteuse {
     position: relative;
@@ -25,22 +33,25 @@ body {
     grid-template-rows: repeat(3, 1fr);
     margin: auto;
     top: 4rem;
+    grid-row: 2;
+    grid-column: 2;
 
 }
 
 #friteuse::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 10.67rem;
-    width: 100%;
-    height: 100%;
+    top: -0.5em;
+    left: 41%;
+    width: 20rem;
+    height: 18rem;
     background-image: url("../img/friteuse.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 0;
-    scale: 2.7;
+    z-index: -1;
+    transform: scale(2.7);
+    
 
 }
 
@@ -58,9 +69,40 @@ body {
     background: rgb(255, 198, 198);
 }
 
+#poulet {
+    background-image: url(../img/plate.svg);
+    grid-row: 2;
+    grid-column: 1;
+    align-content: center;
+    height: 30vmin;
+    width: 30vmin;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+#fries {
+    background-image: url(../img/plate.svg);
+    grid-row: 3;
+    grid-column: 1;
+    align-content: center;
+    height: 30vmin;
+    width: 30vmin;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#fries img {
+    height: 50%;
+    width: 50%;
+    align-content: center;
+}
+
 nav {
     margin-top: 1em;
-    
+    grid-row: 3;
+    grid-column: 3;
+    align-self: center;
 }
 
 #message {

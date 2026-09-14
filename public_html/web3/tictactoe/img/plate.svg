@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="tictactoe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.42 234.63">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d1d1d1;
+        stroke: #383838;
+        stroke-miterlimit: 10;
+        stroke-width: 8px;
+      }
+    </style>
+  </defs>
+  <g id="plate_fries" data-name="plate fries">
+    <ellipse class="cls-1" cx="143.21" cy="117.32" rx="139.21" ry="113.32"/>
+    <ellipse class="cls-1" cx="143.21" cy="117.32" rx="111.7" ry="90.92"/>
+  </g>
+</svg>
