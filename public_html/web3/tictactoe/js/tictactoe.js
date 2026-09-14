@@ -25,11 +25,11 @@ for (let boite of cases) {
     boite.addEventListener("click",function () {
         if (boite.active) {
             if (joueurX) { //tour du joueur X
-                boite.style.backroundImage = "url('')";
+                boite.style.backroundImage = "url('../img/fried_chicken.svg')";
                 joueurX = false;
             }
             else { //tour du jour O
-                boite.style.backroundImage = "url('')";
+                boite.style.backroundImage = "url('../img/fries.svg')";
                 joueurX = true;
             }
             boite.active = false;
