@@ -11,12 +11,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-     z-index: 1000;
+    z-index: 1000;
 }
 
 #commencer:hover {
     background-color: rgb(255, 198, 198);
-
 }
 
 #loading.cache {
@@ -35,6 +34,7 @@ h1 {
     font-size: 5rem;
     color: rgb(255, 254, 254);
 }
+
 body {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -56,8 +56,7 @@ body {
     top: 4rem;
     grid-row: 2;
     grid-column: 2;
-    z-index: 1;
-
+    z-index: 2;
 }
 
 #friteuse::before {
@@ -71,11 +70,9 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: -1;
+    z-index: 1;
     transform: translate(-27%, -54%);
     pointer-events: none;
-    
-
 }
 
 .case {
@@ -85,13 +82,17 @@ body {
     height: 10vmin;
     width: 10vmin;
     margin: 1px;
-    z-index: 1;
+    z-index: 3;
     transition: background 0.3s ease;
+    color:transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
 
 .case:hover {
     background: rgb(255, 198, 198);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #poulet {
@@ -106,6 +107,7 @@ body {
     background-position: center;
     place-self: center;
 }
+
 #fries {
     background-image: url(../img/plate.svg);
     grid-row: 3;
@@ -118,11 +120,6 @@ body {
     background-position: center;
     place-self: center;
 }
-/* 
-#fries img {
-    height: 50%;
-    width: 50%;
-} */
 
 nav {
     margin-top: 1em;
@@ -131,16 +128,25 @@ nav {
     align-self: center;
 }
 
+/* #boite-message {
+    position: fixed;
+    inset: 0;
+    background-color: #a23b3b;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+} */
+
 #message {
     text-align: center;
     margin: 1em;
-
+    color: rgb(255, 254, 254);
 }
 
 #replay {    
     align-content: center;
     display: block;
     margin: 0 auto;
-
-
+    /* transition: fade-out 0.5s ease; */
 }

@@ -27,11 +27,13 @@ for (let boite of cases) {
         
         if (boite.active) {
             if (joueurX) { //tour du joueur X
-                boite.style.backroundImage = "url('../img/fried_chicken.svg')";
+                boite.style.backgroundImage = "url('./img/fried_chicken.svg')";
+                boite.innerText = "X";
                 joueurX = false;
             }
             else { //tour du jour O
-                boite.style.backroundImage = "url('../img/fries.svg')";
+                boite.style.backgroundImage = "url('./img/fries.svg')";
+                boite.innerText = "O";
                 joueurX = true;
             }
             boite.active = false;
@@ -69,12 +71,14 @@ const valide = function () {
 const videCases = function () {
     for (let boite of cases) {
         boite.innerText = '';
+        boite.style.backgroundImage = '';
     }
 };
 
 //Affiche message
 const afficheMessage = function (msg) {
         panneauMessage.innerText = msg;
+        document.querySelector("#boite-message").style.display = "flex";
 };
 
 //Jouer encore
