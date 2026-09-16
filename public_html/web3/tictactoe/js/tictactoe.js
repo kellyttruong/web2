@@ -46,7 +46,17 @@ for (let boite of cases) {
 const valide = function () {
     if ([...cases].every((boite)  => boite.active === false)) { //toutes les cases sont inactives
         afficheMessage("Partie nulle");
+
+    for (let boite of cases) {
+        if (boite.innerText === "X") {
+            boite.style.backgroundImage = "url('./img/fried_chicken_burnt.svg')"; //quand le jeu est nul
+        }
+        else if (boite.innerText === "O") {
+            boite.style.backgroundImage = "url('./img/fries_burnt.svg')"; //quand le jeu est nul
+        }
     }
+}
+
     else { //sinon valide gagnant
         for (let patron of patrons) { //boucle des patrons gagnants
             let val1 = cases[patron[0]].innerText; //les valeurs des positions du patron
@@ -84,8 +94,10 @@ const afficheMessage = function (msg) {
 //Jouer encore
 replayBtn.addEventListener("click", function() {
     videCases();
-    afficheMessage("");
+    panneauMessage.innerText = "";
+    document.querySelector("#boite-message").style.display = "none";
     joueurX = true;
+
     for (let boite of cases) {
         boite.active = true;
     }

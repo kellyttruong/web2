@@ -26,7 +26,7 @@
 
 header {
     text-align: center;
-    padding: 4em;
+    padding: 3em;
     grid-column: 2;
 }
 
@@ -84,15 +84,20 @@ body {
     margin: 1px;
     z-index: 3;
     transition: background 0.3s ease;
+    transform: opacity 0.6;
+    transition: transform 0.3s ease;
     color:transparent;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain; 
+    background-position: center;
+
 }
 
 .case:hover {
     background: rgb(255, 198, 198);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
 }
 
 #poulet {
@@ -106,6 +111,13 @@ body {
     background-size: contain;
     background-position: center;
     place-self: center;
+    transform: translateY(-4rem);
+}
+
+#poulet img {
+    width: 43vmin;
+    height: 43vmin;
+    transform: translateX(-1.5rem) translateY(-3.3rem);
 }
 
 #fries {
@@ -119,6 +131,12 @@ body {
     background-size: contain;
     background-position: center;
     place-self: center;
+    transform: translateY(-4rem);
+}
+#fries img {
+    width: 20vmin;
+    height: 20vmin;
+    transform: translateX(2.6rem);
 }
 
 nav {
@@ -128,15 +146,16 @@ nav {
     align-self: center;
 }
 
-/* #boite-message {
+ #boite-message {
     position: fixed;
     inset: 0;
-    background-color: #a23b3b;
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-} */
+    transition: opacity 0.5s ease;
+} 
 
 #message {
     text-align: center;
