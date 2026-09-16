@@ -5,6 +5,7 @@ let panneauMessage = document.querySelector("#message");
 // Variables de lâ€™app
 let joueurX = true; //premier joueur X
 let gagnant = ''; //pas encore de gagnant
+
 const patrons = [ //les patrons gagnants
     [0, 1, 2],
     [0, 3, 6],
@@ -23,6 +24,7 @@ const patrons = [ //les patrons gagnants
 for (let boite of cases) {
     boite.active = true;
     boite.addEventListener("click",function () {
+        
         if (boite.active) {
             if (joueurX) { //tour du joueur X
                 boite.style.backroundImage = "url('../img/fried_chicken.svg')";
@@ -83,4 +85,11 @@ replayBtn.addEventListener("click", function() {
     for (let boite of cases) {
         boite.active = true;
     }
+});
+
+const loading = document.getElementById("loading");
+const commencer = document.getElementById("commencer");
+
+commencer.addEventListener("click", function() {
+    loading.classList.add("cache");
 });
