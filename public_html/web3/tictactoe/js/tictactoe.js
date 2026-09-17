@@ -66,7 +66,13 @@ const valide = function () {
             if (val1 &&
                 val1 === val2 &&
                 val1 === val3) {  //nous avons on gagnant
-                afficheMessage(`Le gagnant est ${val1}`);
+                
+                    if (val1 === "X") {
+                        afficheMessage(`POULET COMME PLAT!!`);
+                    }
+                    else {
+                        afficheMessage(`UN VRAI QUEBECOIS`);
+                    }
                 for (let boite of cases) {
                     boite.active = false;
                 }
@@ -96,7 +102,7 @@ replayBtn.addEventListener("click", function() {
     videCases();
     panneauMessage.innerText = "";
     document.querySelector("#boite-message").style.display = "none";
-    joueurX = true;
+    joueurX = false;
 
     for (let boite of cases) {
         boite.active = true;

@@ -3,15 +3,22 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #d1d1d1;
+        fill: #666;
+      }
+
+      .cls-1, .cls-2 {
         stroke: #383838;
         stroke-miterlimit: 10;
         stroke-width: 8px;
       }
+
+      .cls-2 {
+        fill: #d1d1d1;
+      }
     </style>
   </defs>
   <g id="plate_fries" data-name="plate fries">
-    <ellipse class="cls-1" cx="143.21" cy="117.32" rx="139.21" ry="113.32"/>
+    <ellipse class="cls-2" cx="143.21" cy="117.32" rx="139.21" ry="113.32"/>
     <ellipse class="cls-1" cx="143.21" cy="117.32" rx="111.7" ry="90.92"/>
   </g>
 </svg>

@@ -3,15 +3,27 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* cliquer pour commencer le jeu */
 
 #loading {
     position: fixed;
     inset: 0;
-    background-color: #a23b3b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #000000;
+    display: grid;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: end;
+    align-content: center;
     z-index: 1000;
+}
+
+#commencer {
+    
+    background-color: rgb(138, 137, 137);
+    font-size: 2rem;
+    justify-content: center;
+    margin:2rem;
+    cursor: pointer;
 }
 
 #commencer:hover {
@@ -23,16 +35,22 @@
     transform: translateY(-100%);
     transition: transform 0.9s ease;
 }
+h2 {
+    color: rgb(255, 254, 254);
+    font-size: 3rem;
+}
 
+/* page de jeu */
 header {
     text-align: center;
-    padding: 3em;
+    padding: 2em;
     grid-column: 2;
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4.5rem;
     color: rgb(255, 254, 254);
+
 }
 
 body {
@@ -46,26 +64,25 @@ body {
 }
 #friteuse {
     position: relative;
-    width: calc(30vmin + 12px);
-    height: calc(30vmin + 12px);
-    max-width: 429px; 
+    width: 30vmin;
+    height: 30vmin;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     margin: auto;
-    top: 4rem;
     grid-row: 2;
     grid-column: 2;
     z-index: 2;
+    margin-top: 2rem;
 }
 
 #friteuse::before {
     content: "";
     position: absolute;
-    top:10em;
-    left: 30%;
-    width: 46rem;
-    height: 44rem;
+    width: 307%;
+    height: 173%;
+    top: 57%;
+    left: 24%;
     background-image: url("../img/friteuse.svg");
     background-size: contain;
     background-repeat: no-repeat;
@@ -84,13 +101,30 @@ body {
     margin: 1px;
     z-index: 3;
     transition: background 0.3s ease;
-    transform: opacity 0.6;
-    transition: transform 0.3s ease;
     color:transparent;
     background-repeat: no-repeat;
     background-size: contain; 
     background-position: center;
+    animation: 2s ease-in-out;
+    cursor: pointer;   
 
+}
+@keyframes case {
+  0% {
+    transform: scale(1);
+  }
+  47% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1.8) 
+  }
+  97% {
+    transform: scale(0px) scale(180deg);
+  }
+  100% {
+    transform: scale(0px);
+  }
 }
 
 .case:hover {
@@ -141,9 +175,6 @@ body {
 
 nav {
     margin-top: 1em;
-    grid-row: 3;
-    grid-column: 3;
-    align-self: center;
 }
 
  #boite-message {
@@ -154,18 +185,34 @@ nav {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.9s ease;
+    flex-direction: column;
 } 
+
+
+/* #boite-message img {
+    width: 20vmin;
+    height: 20vmin;
+} */
 
 #message {
     text-align: center;
     margin: 1em;
     color: rgb(255, 254, 254);
+    font-size: 3rem;
 }
 
 #replay {    
     align-content: center;
     display: block;
     margin: 0 auto;
+    padding: 1em 1em;
+    font-size: 1.5rem;
+    font-weight: bold;
     /* transition: fade-out 0.5s ease; */
+}
+
+#replay:hover {
+    background-color: rgb(255, 198, 198);
+    cursor: pointer;
 }
