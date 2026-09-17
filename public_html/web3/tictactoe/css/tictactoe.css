@@ -24,10 +24,11 @@
     justify-content: center;
     margin:2rem;
     cursor: pointer;
+    font-family: TrenchSlab-Regular;
 }
 
 #commencer:hover {
-    background-color: rgb(255, 198, 198);
+    background-color: rgb(232, 229, 229);
 }
 
 #loading.cache {
@@ -38,6 +39,7 @@
 h2 {
     color: rgb(255, 254, 254);
     font-size: 3rem;
+    font-family: TrenchSlab-Regular;
 }
 
 /* page de jeu */
@@ -48,7 +50,8 @@ header {
 }
 
 h1 {
-    font-size: 4.5rem;
+    font-family: TrenchSlab-Regular;
+    font-size: 4.7rem;
     color: rgb(255, 254, 254);
 
 }
@@ -100,35 +103,38 @@ body {
     width: 10vmin;
     margin: 1px;
     z-index: 3;
-    transition: background 0.3s ease;
+    /* transition: background 3s ease; */
     color:transparent;
     background-repeat: no-repeat;
-    background-size: contain; 
+    /* background-size: 20%;  */
     background-position: center;
-    animation: 2s ease-in-out;
+    /* animation: 2s ease-in-out; */
     cursor: pointer;   
 
 }
-@keyframes case {
-  0% {
-    transform: scale(1);
-  }
-  47% {
-    transform: scale(1.5);
-  }
-  50% {
-    transform: scale(1.8) 
-  }
-  97% {
-    transform: scale(0px) scale(180deg);
-  }
-  100% {
-    transform: scale(0px);
-  }
+
+.caseX {
+    background-image: url(../img/fried_chicken.svg);
+    animation: scal-up 0.5s ease;
+    /* background-size: 100% !important; */
+}
+.case0 {
+    background-image: url(../img/fries.svg);
+    animation: scal-up 0.5s ease;
+
+}
+
+@keyframes scal-up {
+    0% {
+        background-size:20%;
+    }
+    100% {
+        background-size: 100%;
+    }
 }
 
 .case:hover {
-    background: rgb(255, 198, 198);
+    background-color: rgba(2, 0, 0, 0.5);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -200,19 +206,25 @@ nav {
     margin: 1em;
     color: rgb(255, 254, 254);
     font-size: 3rem;
+    font-family: TrenchSlab-Regular;
 }
 
 #replay {    
     align-content: center;
     display: block;
     margin: 0 auto;
-    padding: 1em 1em;
+    padding: 0.5em;
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: TrenchSlab-Regular;
     /* transition: fade-out 0.5s ease; */
 }
 
 #replay:hover {
-    background-color: rgb(255, 198, 198);
+    background-color: rgb(164, 164, 164);
     cursor: pointer;
+}
+@font-face {
+    font-family: TrenchSlab-Regular;
+    src: url("../font/trenchslab/TrenchSlab-Regular.ttf");
 }

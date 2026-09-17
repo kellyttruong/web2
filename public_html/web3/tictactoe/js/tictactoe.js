@@ -27,12 +27,12 @@ for (let boite of cases) {
         
         if (boite.active) {
             if (joueurX) { //tour du joueur X
-                boite.style.backgroundImage = "url('./img/fried_chicken.svg')";
+                boite.classList.add("caseX");
                 boite.innerText = "X";
                 joueurX = false;
             }
             else { //tour du jour O
-                boite.style.backgroundImage = "url('./img/fries.svg')";
+                boite.classList.add("case0");
                 boite.innerText = "O";
                 joueurX = true;
             }
@@ -45,7 +45,7 @@ for (let boite of cases) {
 // Valide lâ€™Ã©tat du jeu: gagnant ou nulle
 const valide = function () {
     if ([...cases].every((boite)  => boite.active === false)) { //toutes les cases sont inactives
-        afficheMessage("Partie nulle");
+        afficheMessage("Aucun gagnant. Les croustilles brulent :(");
 
     for (let boite of cases) {
         if (boite.innerText === "X") {
@@ -71,7 +71,7 @@ const valide = function () {
                         afficheMessage(`POULET COMME PLAT!!`);
                     }
                     else {
-                        afficheMessage(`UN VRAI QUEBECOIS`);
+                        afficheMessage(`POUTINE POUTINE??????!!`);
                     }
                 for (let boite of cases) {
                     boite.active = false;
@@ -87,7 +87,9 @@ const valide = function () {
 const videCases = function () {
     for (let boite of cases) {
         boite.innerText = '';
-        boite.style.backgroundImage = '';
+        boite.classList.remove("caseX");
+        boite.classList.remove("case0");
+        boite.style.backgroundImage = "none";
     }
 };
 
