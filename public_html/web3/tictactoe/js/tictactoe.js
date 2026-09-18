@@ -28,11 +28,13 @@ for (let boite of cases) {
         if (boite.active) {
             if (joueurX) { //tour du joueur X
                 boite.classList.add("caseX");
+                boite.style.backgroundImage = "url('./img/fried_chicken.svg')";
                 boite.innerText = "X";
                 joueurX = false;
             }
             else { //tour du jour O
                 boite.classList.add("case0");
+                boite.style.backgroundImage = "url('./img/fries.svg')";
                 boite.innerText = "O";
                 joueurX = true;
             }
@@ -104,7 +106,7 @@ replayBtn.addEventListener("click", function() {
     videCases();
     panneauMessage.innerText = "";
     document.querySelector("#boite-message").style.display = "none";
-    joueurX = false;
+    joueurX = true;
 
     for (let boite of cases) {
         boite.active = true;
