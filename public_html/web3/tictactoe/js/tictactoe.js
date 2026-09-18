@@ -58,10 +58,10 @@ const valide = function () {
         }
     }
 }
-
-    else { //sinon valide gagnant
-        for (let patron of patrons) { //boucle des patrons gagnants
-            let val1 = cases[patron[0]].innerText; //les valeurs des positions du patron
+//Sinon valide gagnant
+    else { 
+        for (let patron of patrons) {  //boucle des patrons gagnants
+            let val1 = cases[patron[0]].innerText;  //les valeurs des positions du patron
             let val2 = cases[patron[1]].innerText;
             let val3 = cases[patron[2]].innerText;
 
@@ -69,6 +69,11 @@ const valide = function () {
                 val1 === val2 &&
                 val1 === val3) {  //nous avons on gagnant
                 
+// Surligne les 3 cases gagnantes
+                cases[patron[0]].classList.add("gagnant");
+                cases[patron[1]].classList.add("gagnant");
+                cases[patron[2]].classList.add("gagnant");
+
                     if (val1 === "X") {
                         afficheMessage(`POULET COMME PLAT!!`);
                     }
@@ -83,19 +88,41 @@ const valide = function () {
     }
 };
 
+//Preview pour voir le tour de chaque jour
+    for (let boite of cases) {
+
+        boite.addEventListener("mouseenter", function () {
+
+            if (!boite.active) return;
+
+            if (joueurX) {
+            boite.classList.add("previewX");}
+            
+            else {
+                boite.classList.add("previewO");
+
+        }
+    });
+
+    boite.addEventListener("mouseleave", function () {
+        boite.classList.remove("previewX");
+        boite.classList.remove("previewO");
+    });
+}
 
 
-//Vide les cases
+//Vide les cases pour rejouer
 const videCases = function () {
     for (let boite of cases) {
         boite.innerText = '';
         boite.classList.remove("caseX");
         boite.classList.remove("case0");
         boite.style.backgroundImage = "none";
+        boite.classList.remove("gagnant");
     }
 };
 
-//Affiche message
+//Affiche message du gagnant
 const afficheMessage = function (msg) {
         panneauMessage.innerText = msg;
         document.querySelector("#boite-message").style.display = "flex";
@@ -113,6 +140,7 @@ replayBtn.addEventListener("click", function() {
     }
 });
 
+//Page pour commencer le jeu
 const loading = document.getElementById("loading");
 const commencer = document.getElementById("commencer");
 

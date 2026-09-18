@@ -3,8 +3,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* cliquer pour commencer le jeu */
 
+/* cliquer pour commencer le jeu */
 #loading {
     position: fixed;
     inset: 0;
@@ -18,7 +18,6 @@
 }
 
 #commencer {
-    
     background-color: rgb(138, 137, 137);
     font-size: 2rem;
     justify-content: center;
@@ -36,6 +35,7 @@
     transform: translateY(-100%);
     transition: transform 0.9s ease;
 }
+
 h2 {
     color: rgb(255, 254, 254);
     font-size: 3rem;
@@ -53,7 +53,6 @@ h1 {
     font-family: TrenchSlab-Regular;
     font-size: 4.7rem;
     color: rgb(255, 254, 254);
-
 }
 
 body {
@@ -63,8 +62,8 @@ body {
     background-image: url("../img/bg2.svg"); 
     overflow: hidden;
     background-size:cover;
-
 }
+
 #friteuse {
     position: relative;
     width: 30vmin;
@@ -118,10 +117,10 @@ body {
     animation: scal-up 0.5s ease;
     /* background-size: 100% !important; */
 }
+
 .case0 {
     background-image: url(../img/fries.svg);
     animation: scal-up 0.5s ease;
-
 }
 
 @keyframes scal-up {
@@ -133,11 +132,28 @@ body {
     }
 }
 
+.case.gagnant {
+    /* background-color: rgba(255, 255, 255, 0.4); */
+    box-shadow: 0 0 20px rgb(215, 135, 44);
+    transform: scale(1.05);
+    transition: 0.3s ease;
+}
+
 .case:hover {
     background-color: rgba(2, 0, 0, 0.5);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+.case.previewX:hover {
+    background-image: url("../img/fried_chicken_raw1.svg") !important;
+    opacity: 0.2;
+}
+
+.case.previewO:hover {
+    background-image: url("../img/fries_raw.svg") !important;
+    opacity: 0.2;
 }
 
 #poulet {
@@ -173,12 +189,14 @@ body {
     place-self: center;
     transform: translateY(-4rem);
 }
+
 #fries img {
     width: 20vmin;
     height: 20vmin;
     transform: translateX(2.6rem);
 }
 
+/* Page pour rejouer */
 nav {
     margin-top: 1em;
 }
@@ -194,7 +212,6 @@ nav {
     transition: opacity 0.9s ease;
     flex-direction: column;
 } 
-
 
 /* #boite-message img {
     width: 20vmin;
@@ -224,6 +241,8 @@ nav {
     background-color: rgb(164, 164, 164);
     cursor: pointer;
 }
+
+/* font */
 @font-face {
     font-family: TrenchSlab-Regular;
     src: url("../font/trenchslab/TrenchSlab-Regular.ttf");
