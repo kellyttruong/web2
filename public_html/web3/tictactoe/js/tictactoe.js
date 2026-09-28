@@ -61,16 +61,14 @@ const valide = function () {
         if (boite.innerText === "X") {
             boite.style.backgroundImage = "url('./img/fried_chicken_burnt.svg')"; //quand le jeu est nul
             lost.currentTime = 0;
-            lost.play();
-            son.pause();
-        
         }
         else if (boite.innerText === "O") {
             boite.style.backgroundImage = "url('./img/fries_burnt.svg')"; //quand le jeu est nul
             lost.currentTime = 0;
-            lost.play();
+
+        }   lost.play();
             son.pause();
-        }
+            joue = false
     }
 }
 //Sinon valide gagnant
@@ -92,16 +90,20 @@ const valide = function () {
                     if (val1 === "X") {
                         afficheMessage(`POULET COMME PLAT!!`);
                         win.currentTime = 0;
-                        win.play();
-                        son.pause();
-
+                        
                     }
                     else {
                         afficheMessage(`POUTINE POUTINE??????!!`);
                         win.currentTime = 0;
-                        win.play();
-                        son.pause();
+                        // win.play();
+                        // son.pause();
                     }
+                    win.play();
+                    son.pause();
+                    joue = false;
+                    
+
+
                 for (let boite of cases) {
                     boite.active = false;
                 }
@@ -160,6 +162,12 @@ replayBtn.addEventListener("click", function() {
     for (let boite of cases) {
         boite.active = true;
     }
+    // bg song 
+    if (!joue){
+        son.play();
+        joue = true;
+    }
+
 
 });
 
@@ -170,11 +178,11 @@ const commencer = document.getElementById("commencer");
 commencer.addEventListener("click", function() {
     loading.classList.add("cache");
 
-// bg song 
-if (!joue){
-    son.play();
-    joue = true;
-}
+    // bg song 
+    if (!joue){
+        son.play();
+        joue = true;
+    }
 });
 
 // bg song 
