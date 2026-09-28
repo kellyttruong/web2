@@ -1,6 +1,10 @@
 let cases = document.querySelectorAll(".case");
 let replayBtn = document.querySelector("#replay");
 let panneauMessage = document.querySelector("#message");
+const pouletcrisp = document.getElementById("poulet-crisp");
+const fritecrisp = document.getElementById("frite-crisp");
+const lost = document.getElementById("lost");
+const win = document.getElementById("win");
 
 // Variables de lâ€™app
 let joueurX = true; //premier joueur X
@@ -30,12 +34,16 @@ for (let boite of cases) {
                 boite.classList.add("caseX");
                 boite.style.backgroundImage = "url('./img/fried_chicken.svg')";
                 boite.innerText = "X";
+                pouletcrisp.currentTime = 0;
+                pouletcrisp.play();
                 joueurX = false;
             }
             else { //tour du jour O
                 boite.classList.add("case0");
                 boite.style.backgroundImage = "url('./img/fries.svg')";
                 boite.innerText = "O";
+                fritecrisp.currentTime = 0;
+                fritecrisp.play();
                 joueurX = true;
             }
             boite.active = false;
@@ -52,9 +60,16 @@ const valide = function () {
     for (let boite of cases) {
         if (boite.innerText === "X") {
             boite.style.backgroundImage = "url('./img/fried_chicken_burnt.svg')"; //quand le jeu est nul
+            lost.currentTime = 0;
+            lost.play();
+            son.pause();
+        
         }
         else if (boite.innerText === "O") {
             boite.style.backgroundImage = "url('./img/fries_burnt.svg')"; //quand le jeu est nul
+            lost.currentTime = 0;
+            lost.play();
+            son.pause();
         }
     }
 }
@@ -76,9 +91,16 @@ const valide = function () {
 
                     if (val1 === "X") {
                         afficheMessage(`POULET COMME PLAT!!`);
+                        win.currentTime = 0;
+                        win.play();
+                        son.pause();
+
                     }
                     else {
                         afficheMessage(`POUTINE POUTINE??????!!`);
+                        win.currentTime = 0;
+                        win.play();
+                        son.pause();
                     }
                 for (let boite of cases) {
                     boite.active = false;
@@ -138,6 +160,7 @@ replayBtn.addEventListener("click", function() {
     for (let boite of cases) {
         boite.active = true;
     }
+
 });
 
 //Page pour commencer le jeu
@@ -146,4 +169,18 @@ const commencer = document.getElementById("commencer");
 
 commencer.addEventListener("click", function() {
     loading.classList.add("cache");
+
+// bg song 
+if (!joue){
+    son.play();
+    joue = true;
+}
 });
+
+// bg song 
+let joue = false;
+let son = document.getElementById("son");
+son.oncanplay = function () {
+    son.loop = true;
+    son.volume = 0.2;
+}
