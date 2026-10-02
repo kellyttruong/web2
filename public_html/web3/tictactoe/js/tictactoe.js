@@ -1,15 +1,16 @@
 let cases = document.querySelectorAll(".case");
 let replayBtn = document.querySelector("#replay");
 let panneauMessage = document.querySelector("#message");
-const pouletcrisp = document.getElementById("poulet-crisp");
-const fritecrisp = document.getElementById("frite-crisp");
-const lost = document.getElementById("lost");
-const win = document.getElementById("win");
+let pouletcrisp = document.querySelector("#poulet-crisp");
+let fritecrisp = document.querySelector("#frite-crisp");
+let lost = document.querySelector("#lost");
+let win = document.querySelector("#win");
+
 
 // Variables de lâ€™app
 let joueurX = true; //premier joueur X
 let gagnant = ''; //pas encore de gagnant
-
+    
 const patrons = [ //les patrons gagnants
     [0, 1, 2],
     [0, 3, 6],
