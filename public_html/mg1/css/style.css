@@ -23,6 +23,7 @@ h3 {
 a {
     color: rgb(0, 0, 0);
     font-size: 1.25rem;
+    padding: 1rem;
 }
 
 a:hover {
