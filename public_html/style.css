@@ -7,11 +7,49 @@
 h1 {
     padding: 20px;
     text-align: center;
-    font-size: 120px;
-    font-family: American Typewriter, serif;
+    font-size: 20rem;
+    font-family: 'Poppins-Bold';
 }
 
-h2 {
+img {
+  height: auto;
+  width: 5%;
+  align-content: center;
+
+}
+
+nav {
+  text-align: center;
+  font-family: 'Hind-Regular';
+  padding: 15px;
+  display: grid;
+  
+}
+
+nav a {
+  color: rgb(0, 0, 0);
+  padding: 10px;
+}
+
+nav a:hover {
+  color: rgb(209, 158, 182);
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('./mg1/font/poppins/Poppins-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('./mg1/font/poppins/Poppins-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Hind-Regular';
+    src: url('./mg1/font/hind/Hind-Regular.otf');
+}
+/* h2 {
     text-align: center;
     font-size: 45px;
 }
@@ -59,4 +97,4 @@ p {
   .class {
     grid-template-columns: repeat(4, 1fr);
   }
-}
+} */

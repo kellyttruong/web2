@@ -12,6 +12,7 @@ h1 {
     font-size: 4rem;
     color: rgb(0, 0, 0);
     padding: 2rem;
+    font-family: 'Poppins-Bold';
 }
 
 h3 {
@@ -27,4 +28,19 @@ a {
 a:hover {
     color: rgb(101, 82, 116);
     text-decoration: overline;
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('../font/poppins/Poppins-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('../font/poppins/Poppins-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Hind-Regular';
+    src: url('../font/hind/Hind-Regular.otf');
 }
