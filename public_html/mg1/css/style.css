@@ -6,28 +6,29 @@
 
 body {
     text-align: center;
+    background-color: rgb(0, 0, 0);
 }
 
 h1 {
     font-size: 4rem;
-    color: rgb(0, 0, 0);
+    color: #F6BAC6;
     padding: 2rem;
     font-family: 'Poppins-Bold';
 }
 
 h3 {
     font-size: 1.7rem;
-    color: rgb(0, 0, 0);
+    color: #F4B8CA;
     padding: 2rem;
 }
 a {
-    color: rgb(0, 0, 0);
+    color: #F4B8CA;
     font-size: 1.25rem;
     padding: 1rem;
 }
 
 a:hover {
-    color: rgb(101, 82, 116);
+    color: #F1D3DF;
     text-decoration: overline;
 }
 
