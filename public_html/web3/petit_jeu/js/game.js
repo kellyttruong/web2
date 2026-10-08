@@ -171,6 +171,7 @@ const render = function (s) {
     (canvas.height - winImage.height)/2);
     }
 }
+
 else 
     if (bgImage.complete) {
         ctx.fillStyle = ctx.createPattern(bgImage, 'repeat');
