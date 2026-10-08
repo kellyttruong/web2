@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+}
+
+h1 {
+    font-size: 4rem;
+    color: #F6BAC6;
+    padding: 2rem;
+    font-family: 'Poppins-Bold';
+}
+
+h3 {
+    font-size: 1.7rem;
+    color: #F4B8CA;
+    padding: 2rem;
+}
+a {
+    color: #F4B8CA;
+    font-size: 1.25rem;
+    padding: 1rem;
+}
+
+a:hover {
+    color: #F1D3DF;
+    text-decoration: overline;
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('../font/poppins/Poppins-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('../font/poppins/Poppins-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Hind-Regular';
+    src: url('../font/hind/Hind-Regular.otf');
+}
