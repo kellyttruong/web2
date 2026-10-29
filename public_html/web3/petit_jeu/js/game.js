@@ -119,6 +119,9 @@ const init = function () {
         goodies[i].x = (Math.random() * (canvas.width - goodies[i].width));
         goodies[i].y = 0;
     }
+    lvl =1;
+    pts =0;
+
     main(); //lancer la boucle
 };
 
@@ -126,9 +129,17 @@ const init = function () {
 
 /* BOUCLE PRINCIPALE : MAIN */
 const main = function () {
-    if (checkWin()) {
-        render("win"); //affichage gagnant vrai
-    }
+	if (checkLevel()) {
+		//Instead of winning when all goodies are grabbed
+		//We Reset the goodies and...
+		goodies.push({ width: 32, height: 32, x: Math.random() * (canvas.width - 32), y: Math.random() * (canvas.height - 32) });
+		goodies.push({ width: 32, height: 32, x: Math.random() * (canvas.width - 32), y: Math.random() * (canvas.height - 32) });
+		goodies.push({ width: 32, height: 32, x: Math.random() * (canvas.width - 32), y: Math.random() * (canvas.height - 32) });
+		
+		// ... raise the level by 1, and add speed to the player
+		lvl++;
+		player.speed += 2;
+	}
     else {
         //Pas encore gagné, jouer le jeu
         //déplacer le joueur
@@ -204,6 +215,7 @@ const render = function (statut) {
         ctx.fillStyle = "rgb(250, 250, 250)";
         ctx.font = "14px monospace"; //peut être une fonte du CSS
         ctx.fillText("Goodies restants : "+goodies.length, 32, 32);
+        ctx.fillText("Points: "+pts, 32, 64);
     }
 };
 
@@ -221,7 +233,7 @@ const checkCollision = function (obj1,obj2) {
 
 
 //Vérifiez si nous avons gagné
-const checkWin = function () {
+const checkLevel = function () {
     if (goodies.length > 0) {
         return false;
     } else {
