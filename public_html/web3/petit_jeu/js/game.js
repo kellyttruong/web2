@@ -34,6 +34,10 @@ let goodyImage = new Image();
 goodyImage.src = "img/goody.png";
 
 
+// Image des baddis
+let baddyImage = new Image();
+baddyImage.src = "img/baddy.png";
+
 
 /* OBJETS GLOBAUX */
 const player = {
@@ -43,6 +47,9 @@ const player = {
 };
 
 let goodies = []; // variable pour contenir les goddies, un array
+
+let baddies = []; // variable pour contenir les baddies, un array
+
 
 // Variables de vitesse
 let vX = 0;
@@ -114,13 +121,27 @@ const init = function () {
         { width: 32, height: 32 }  // trois goodies
     ];
 
+      baddies = [
+        { width: 32, height: 32 }, // un baddy
+        { width: 32, height: 32 }, // deux baddies
+        { width: 32, height: 32 }  // trois baddies
+    ];
+
     //Placez des goodies à des endroits aléatoires
     for (let i in goodies) {
         goodies[i].x = (Math.random() * (canvas.width - goodies[i].width));
         goodies[i].y = 0;
     }
+
+       for (let i in baddies) {
+        baddies[i].x = (Math.random() * (canvas.width - baddies[i].width));
+        baddies[i].y = 0;
+    }
     lvl =1;
     pts =0;
+
+    gameOver = false;
+    overReady = false;
 
     main(); //lancer la boucle
 };
@@ -129,17 +150,24 @@ const init = function () {
 
 /* BOUCLE PRINCIPALE : MAIN */
 const main = function () {
-	if (checkLevel()) {
-		//Instead of winning when all goodies are grabbed
-		//We Reset the goodies and...
-		goodies.push({ width: 32, height: 32, x: Math.random() * (canvas.width - 32), y: Math.random() * (canvas.height - 32) });
-		goodies.push({ width: 32, height: 32, x: Math.random() * (canvas.width - 32), y: Math.random() * (canvas.height - 32) });
-		goodies.push({ width: 32, height: 32, x: Math.random() * (canvas.width - 32), y: Math.random() * (canvas.height - 32) });
-		
-		// ... raise the level by 1, and add speed to the player
-		lvl++;
-		player.speed += 2;
-	}
+	if (checkWin()) {
+		//WIN display win frame
+		if (winReady) {
+			//ctx.drawImage(winImage, 0, 0);
+			ctx.drawImage(winImage,
+				(cvs.width-winImage.width)/2,
+				(cvs.height-winImage.height)/2);
+		}
+    }
+    	else if (gameOver) {
+		//LOSE display Game Over frame
+		if (overReady) {
+			// ctx.drawImage(overImage, 0, 0);
+			ctx.drawImage(overImage,
+				(cvs.width-overImage.width)/2,
+				(cvs.height-overImage.height)/2);
+		}
+    }
     else {
         //Pas encore gagné, jouer le jeu
         //déplacer le joueur
@@ -172,8 +200,21 @@ const main = function () {
 
             if (goodies[i].y > canvas.height) {
 				goodies.splice(i, 1);
-			}
+        
+		}
         }
+        for (let i in baddies) {
+    baddies[i].y++;
+    
+            if (checkCollision(player,baddies[i])) {
+                gameOver = true;
+            }
+
+            if (baddies[i].y > canvas.height) {
+				baddies.splice(i, 1);
+        
+		}
+}
 
         render();
         window.requestAnimationFrame(main);
@@ -190,6 +231,7 @@ const render = function (statut) {
         ctx.beginPath();
         ctx.roundRect(40,40,canvas.width-80, canvas.height-80, [40]);
         ctx.fill();
+    
 
         if (winImage.complete) {
             ctx.drawImage(winImage, (canvas.width - winImage.width)/2,
@@ -209,6 +251,11 @@ const render = function (statut) {
         if (goodyImage.complete) {
             for (let i in goodies) {
                 ctx.drawImage(goodyImage, goodies[i].x, goodies[i].y);
+            }
+        }
+        if (baddyImage.complete) {
+            for (let i in baddies) {
+                ctx.drawImage(baddyImage, baddies[i].x, baddies[i].y);
             }
         }
         //Label
@@ -233,18 +280,27 @@ const checkCollision = function (obj1,obj2) {
 
 
 //Vérifiez si nous avons gagné
-const checkLevel = function () {
-    if (goodies.length > 0) {
-        return false;
-    } else {
-        return true;
-    }
+let checkWin = function () {
+	if (goodies.length > 0) {
+		return false;
+	} else {
+		return true;
+	}
 };
 
 
 let spawnGoody = function () {
 	//push() adds an item to the array, a new goodie
 	goodies.push({
+		//We need to set the new goodie’s init properties
+		width: 32,
+		height: 32,
+		//and place it at a random position at the top
+		x: (Math.random() * (canvas.width - 32)),
+		y: 0
+	});
+
+    	baddies.push({
 		//We need to set the new goodie’s init properties
 		width: 32,
 		height: 32,
