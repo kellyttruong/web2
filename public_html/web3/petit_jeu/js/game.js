@@ -25,6 +25,9 @@ bgImage.src = "img/background.png";
 let winImage = new Image();
 winImage.src = "img/win.png";
 
+let overImage = new Image();
+overImage.src = "img/over.png";
+
 // Image du joueur
 let playerImage = new Image();
 playerImage.src = "img/player.png";
@@ -161,12 +164,14 @@ const main = function () {
     }
     	else if (gameOver) {
 		//LOSE display Game Over frame
-		if (overReady) {
-			// ctx.drawImage(overImage, 0, 0);
-			ctx.drawImage(overImage,
-				(cvs.width-overImage.width)/2,
-				(cvs.height-overImage.height)/2);
-		}
+        if (overImage.complete) {
+        ctx.fillStyle = ctx.createPattern(bgImage, 'repeat');
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(overImage,
+            (canvas.width-overImage.width)/2,
+            (canvas.height-overImage.height)/2);
+    }
     }
     else {
         //Pas encore gagné, jouer le jeu
