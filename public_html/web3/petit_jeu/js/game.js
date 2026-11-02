@@ -30,16 +30,16 @@ overImage.src = "img/over.png";
 
 // Image du joueur
 let playerImage = new Image();
-playerImage.src = "img/player.png";
+playerImage.src = "img/player.svg";
 
 // Image des goodies
 let goodyImage = new Image();
-goodyImage.src = "img/goody.png";
+goodyImage.src = "img/goody.svg";
 
 
 // Image des baddis
 let baddyImage = new Image();
-baddyImage.src = "img/baddy.png";
+baddyImage.src = "img/baddy.svg";
 
 
 /* OBJETS GLOBAUX */
@@ -319,7 +319,6 @@ let spawnGoody = function () {
 
 //Lancer le jeu
 init();
-
 
 
 
