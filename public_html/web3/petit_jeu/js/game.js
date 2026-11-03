@@ -16,10 +16,11 @@ document.querySelector("#gameBox").appendChild(canvas);
 // Le context ctx sert à manipuler le contenue du canevas
 const ctx = canvas.getContext("2d");
 
+
 /* SPRITES */
 // Image d'arrière-plan
 let bgImage = new Image();
-bgImage.src = "img/background.png";
+bgImage.src = "img/bg.svg";
 
 // Estampe gagnant
 let winImage = new Image();
@@ -30,7 +31,7 @@ overImage.src = "img/over.png";
 
 // Image du joueur
 let playerImage = new Image();
-playerImage.src = "img/player.svg";
+playerImage.src = "img/santa.svg";
 
 // Image des goodies
 let goodyImage = new Image();
@@ -45,8 +46,8 @@ baddyImage.src = "img/baddy.svg";
 /* OBJETS GLOBAUX */
 const player = {
     speed : 5, // mouvement en pixels par tick
-    width: 32,
-    height: 32
+    width: 115,
+    height: 115
 };
 
 let goodies = []; // variable pour contenir les goddies, un array
@@ -57,6 +58,13 @@ let baddies = []; // variable pour contenir les baddies, un array
 // Variables de vitesse
 let vX = 0;
 let vY = 0;
+
+//The timer variables
+let t; //time
+let sec; //sec
+let min; //min
+
+let timer; //reference to timer object
 
 
 /* CONTRÔLES */
@@ -117,17 +125,15 @@ const init = function () {
     player.x = (canvas.width - player.width) / 2;
     player.y = canvas.height - player.height - 5;
 
-    // Mettre 3 goodies dans l’array
+
     goodies = [
-        { width: 32, height: 32 }, // un goody
-        { width: 32, height: 32 }, // deux goodies
-        { width: 32, height: 32 }  // trois goodies
+        { width: 60, height: 60 },
+        { width: 60, height: 60 },
+        { width: 60, height: 60 }
     ];
 
       baddies = [
-        { width: 32, height: 32 }, // un baddy
-        { width: 32, height: 32 }, // deux baddies
-        { width: 32, height: 32 }  // trois baddies
+        { width: 60, height: 60 }
     ];
 
     //Placez des goodies à des endroits aléatoires
@@ -146,6 +152,15 @@ const init = function () {
     gameOver = false;
     overReady = false;
 
+    //Set the timer vars to 0, and start the timer
+	//This timer counts the time elapsed in game
+	// if you want a timer to set the maximum time to complete, just reverse the values
+	// and define a condition and a function to handle when the time runs out.
+	t = 0;
+	sec = 0;
+	min = 0;
+	timer = setInterval(clock, 1000);  //clock() is the function handle the timer (line 222)
+
     main(); //lancer la boucle
 };
 
@@ -158,9 +173,10 @@ const main = function () {
 		if (winReady) {
 			//ctx.drawImage(winImage, 0, 0);
 			ctx.drawImage(winImage,
-				(cvs.width-winImage.width)/2,
-				(cvs.height-winImage.height)/2);
+				(canvas.width-winImage.width)/2,
+				(canvas.height-winImage.height)/2);
 		}
+        clearInterval(timer); //stop the clock
     }
     	else if (gameOver) {
 		//LOSE display Game Over frame
@@ -191,7 +207,7 @@ const main = function () {
             vY = -vY; //bounce
         }
 
-        if (Math.random() > 0.99) {
+        if (Math.random() > .99) {
 			spawnGoody(); //the function that generates a new goodie, line 214
 		}
         //vérifier les collisions
@@ -251,16 +267,16 @@ const render = function (statut) {
             ctx.fill();
         }
         if (playerImage.complete) {
-            ctx.drawImage(playerImage, player.x, player.y);
+            ctx.drawImage(playerImage, player.x, player.y, 115, 115);
         }
         if (goodyImage.complete) {
             for (let i in goodies) {
-                ctx.drawImage(goodyImage, goodies[i].x, goodies[i].y);
+                ctx.drawImage(goodyImage, goodies[i].x, goodies[i].y, 60, 60);
             }
         }
         if (baddyImage.complete) {
             for (let i in baddies) {
-                ctx.drawImage(baddyImage, baddies[i].x, baddies[i].y);
+                ctx.drawImage(baddyImage, baddies[i].x, baddies[i].y, 60, 60);
             }
         }
         //Label
@@ -268,6 +284,7 @@ const render = function (statut) {
         ctx.font = "14px monospace"; //peut être une fonte du CSS
         ctx.fillText("Goodies restants : "+goodies.length, 32, 32);
         ctx.fillText("Points: "+pts, 32, 64);
+		ctx.fillText("Time: " + min + ":" + sec, 32, 96);
     }
 };
 
@@ -298,24 +315,32 @@ let spawnGoody = function () {
 	//push() adds an item to the array, a new goodie
 	goodies.push({
 		//We need to set the new goodie’s init properties
-		width: 32,
-		height: 32,
+		width: 60,
+		height: 60,
 		//and place it at a random position at the top
-		x: (Math.random() * (canvas.width - 32)),
+		x: (Math.random() * (canvas.width - 60)),
 		y: 0
 	});
 
     	baddies.push({
 		//We need to set the new goodie’s init properties
-		width: 32,
-		height: 32,
+		width: 60,
+		height: 60,
 		//and place it at a random position at the top
-		x: (Math.random() * (canvas.width - 32)),
+		x: (Math.random() * (canvas.width - 60)),
 		y: 0
 	});
 };
 
-
+let clock = function () {
+	//Add one to t (this will contains only seconds)
+	t++;	
+sec++;
+	if (sec == 60) {
+		sec = 0;
+		min++;
+	}
+}
 
 //Lancer le jeu
 init();
