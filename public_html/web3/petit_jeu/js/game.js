@@ -34,9 +34,21 @@ overImage.src = "img/over.png";
 let playerImage = new Image();
 playerImage.src = "img/santa.svg";
 
-// Image des goodies
+// Image des goodies 1
 let goodyImage = new Image();
 goodyImage.src = "img/purple.svg";
+
+// // Image des goodies 2
+// let goodyImage = new Image();
+// goodyImage.src = "img/pink.svg";
+
+// // Image des goodies 3
+// let goodyImage = new Image();
+// goodyImage.src = "img/green.svg";
+
+// // Image des goodies 4
+// let goodyImage = new Image();
+// goodyImage.src = "img/yellow.svg";
 
 
 // Image des baddis
@@ -66,6 +78,7 @@ let sec; //sec
 let min; //min
 
 let timer; //reference to timer object
+let timeLeft;
 
 
 /* CONTRÔLES */
@@ -130,6 +143,7 @@ const init = function () {
     goodies = [
         { width: 60, height: 60 },
         { width: 60, height: 60 },
+        { width: 60, height: 60 },
         { width: 60, height: 60 }
     ];
 
@@ -147,7 +161,7 @@ const init = function () {
         baddies[i].x = (Math.random() * (canvas.width - baddies[i].width));
         baddies[i].y = 0;
     }
-    lvl =1;
+
     pts =0;
 
     gameOver = false;
@@ -157,10 +171,8 @@ const init = function () {
 	//This timer counts the time elapsed in game
 	// if you want a timer to set the maximum time to complete, just reverse the values
 	// and define a condition and a function to handle when the time runs out.
-	t = 0;
-	sec = 0;
-	min = 0;
-	timer = setInterval(clock, 1000);  //clock() is the function handle the timer (line 222)
+    timeLeft = 60;
+    timer = setInterval(clock, 1000); //clock() is the function handle the timer (line 222)
 
     main(); //lancer la boucle
 };
@@ -182,9 +194,7 @@ const main = function () {
     	else if (gameOver) {
 		//LOSE display Game Over frame
         if (overImage.complete) {
-        ctx.fillStyle = ctx.createPattern(bgImage, 'repeat');
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
         ctx.drawImage(overImage,
             (canvas.width-overImage.width)/2,
             (canvas.height-overImage.height)/2);
@@ -211,6 +221,7 @@ const main = function () {
         if (Math.random() > .99) {
 			spawnGoody(); //the function that generates a new goodie, line 214
 		}
+        
         //vérifier les collisions
 for (let i = goodies.length - 1; i >= 0; i--) {
     goodies[i].y++;
@@ -262,12 +273,9 @@ const render = function (statut) {
         }
     }
     else {  // sinon, afficher le jeu, statut par défaut
-        if (bgImage.complete) {
-            ctx.fillStyle = ctx.createPattern(bgImage, 'repeat');
-            ctx.beginPath();
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            ctx.fill();
-        }
+       if (bgImage.complete) {
+    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+}
         if (playerImage.complete) {
             ctx.drawImage(playerImage, player.x, player.y, 115, 115);
         }
@@ -282,11 +290,13 @@ const render = function (statut) {
             }
         }
         //Label
+        
         ctx.fillStyle = "rgb(250, 250, 250)";
-        ctx.font = "14px monospace"; //peut être une fonte du CSS
-        ctx.fillText("Goodies restants : "+goodies.length, 32, 32);
-        ctx.fillText("Points: "+pts, 32, 64);
-		ctx.fillText("Time: " + min + ":" + sec, 32, 96);
+        ctx.textAlign = "right";
+        ctx.font = "20px monospace"; //peut être une fonte du CSS
+        ctx.fillText("Goodies restants : "+goodies.length, canvas.width - 32, 50);
+        ctx.fillText("Points: "+pts, canvas.width - 32, 82);
+		ctx.fillText("Time: " + min + ":" + sec, canvas.width - 32, 114);
     }
 };
 
@@ -335,14 +345,17 @@ let spawnGoody = function () {
 };
 
 let clock = function () {
-	//Add one to t (this will contains only seconds)
-	t++;	
-sec++;
-	if (sec == 60) {
-		sec = 0;
-		min++;
-	}
-}
+    timeLeft--;
+
+    min = Math.floor(timeLeft / 60);
+    sec = timeLeft % 60;
+
+    if (timeLeft <= 0) {
+        timeLeft = 0;
+        gameOver = true;
+        clearInterval(timer);
+    }
+};
 
 //Lancer le jeu
 init();
