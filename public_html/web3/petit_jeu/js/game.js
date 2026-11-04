@@ -15,6 +15,7 @@ canvas.height = document.documentElement.clientHeight;
 document.querySelector("#gameBox").appendChild(canvas);
 // Le context ctx sert à manipuler le contenue du canevas
 const ctx = canvas.getContext("2d");
+const goodySound = document.querySelector("#goodies");
 
 
 /* SPRITES */
@@ -35,7 +36,7 @@ playerImage.src = "img/santa.svg";
 
 // Image des goodies
 let goodyImage = new Image();
-goodyImage.src = "img/goody.svg";
+goodyImage.src = "img/purple.svg";
 
 
 // Image des baddis
@@ -211,18 +212,19 @@ const main = function () {
 			spawnGoody(); //the function that generates a new goodie, line 214
 		}
         //vérifier les collisions
-        for (let i in goodies) {
-            goodies[i].y++;
+for (let i = goodies.length - 1; i >= 0; i--) {
+    goodies[i].y++;
 
-            if (checkCollision(player,goodies[i])) {
-                goodies.splice(i,1);
-                pts++;
-            }
+    if (checkCollision(player, goodies[i])) {
+        goodies.splice(i, 1);
+        pts++;
 
-            if (goodies[i].y > canvas.height) {
-				goodies.splice(i, 1);
-        
-		}
+        goodySound.currentTime = 0;
+        goodySound.play();
+    }
+    else if (goodies[i].y > canvas.height) {
+        goodies.splice(i, 1);
+    }
         }
         for (let i in baddies) {
     baddies[i].y++;
@@ -322,14 +324,14 @@ let spawnGoody = function () {
 		y: 0
 	});
 
-    	baddies.push({
-		//We need to set the new goodie’s init properties
-		width: 60,
-		height: 60,
-		//and place it at a random position at the top
-		x: (Math.random() * (canvas.width - 60)),
-		y: 0
-	});
+ if (Math.random() > 0.5) {
+    baddies.push({
+        width: 60,
+        height: 60,
+        x: Math.random() * (canvas.width - 60),
+        y: 0
+    });
+}
 };
 
 let clock = function () {
