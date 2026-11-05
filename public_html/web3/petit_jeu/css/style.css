@@ -3,6 +3,29 @@ margin: 0px;
 overflow: hidden; 
 }
 
+#gameBox {
+    position: relative;
+}
+
+#replayButton {
+    display: none;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    font-size: 20px;
+    font-family: monospace;
+    cursor: pointer;
+    z-index: 10;
+    background-color: #9fbed2;
+    border-radius: 5px;
+}
+
+#replayButton:hover {
+    background-color: #0a4b6b;
+}
+
 .arrow { 
 position: absolute; 
 background: none; 

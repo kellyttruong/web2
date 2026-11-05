@@ -16,6 +16,7 @@ document.querySelector("#gameBox").appendChild(canvas);
 // Le context ctx sert à manipuler le contenue du canevas
 const ctx = canvas.getContext("2d");
 const goodySound = document.querySelector("#goodies");
+const loseSound = document.querySelector("#lose");
 
 
 /* SPRITES */
@@ -249,18 +250,10 @@ const render = function (statut) {
     //Nettoyer l’écran/canvas à chaque tic
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    if (statut == "win") {  // statut: on a gagné, afficher le cadre gagnant
-        ctx.fillStyle = "rgb(200,230,200)";  //vert pale
-        ctx.beginPath();
-        ctx.roundRect(40,40,canvas.width-80, canvas.height-80, [40]);
-        ctx.fill();
-    
-
         if (winImage.complete) {
             ctx.drawImage(winImage, (canvas.width - winImage.width)/2,
                 (canvas.height - winImage.height)/2);
         }
-    }
     else {  // sinon, afficher le jeu, statut par défaut
         if (bgImage.complete) {
             ctx.fillStyle = ctx.createPattern(bgImage, 'repeat');
@@ -314,12 +307,12 @@ let checkWin = function () {
 
 
 let spawnGoody = function () {
-	//push() adds an item to the array, a new goodie
+	//nouveau item dans array
 	goodies.push({
-		//We need to set the new goodie’s init properties
+		//propriete pour goodie
 		width: 60,
 		height: 60,
-		//and place it at a random position at the top
+		//placement aleatoire
 		x: (Math.random() * (canvas.width - 60)),
 		y: 0
 	});
@@ -335,14 +328,20 @@ let spawnGoody = function () {
 };
 
 let clock = function () {
-	//Add one to t (this will contains only seconds)
-	t++;	
-sec++;
-	if (sec == 60) {
-		sec = 0;
-		min++;
-	}
-}
+t++;	
+    sec++;
+	    if (sec == 60) {
+		    sec = 0;
+		    min++;
+	    }
+    if (t >= 60) {
+        gameOver = true;
+        clearInterval(timer);
+
+        loseSound.currentTime = 0;
+        loseSound.play();
+    }
+};
 
 //Lancer le jeu
 init();

@@ -1,21 +1,26 @@
-/**
-VERSION 5.0 • 2026 Jan
-Mise à jour syntaxe et structure
-Vraiment mobile first
-**/
 
-
-/* PLATEFORME DE JEU */
-// Créer le canevas
+// creation du canvas
 const canvas = document.createElement("canvas");
 // Format plein écran
 canvas.width = document.documentElement.clientWidth; 
 canvas.height = document.documentElement.clientHeight;
 // L'ajouter au document
 document.querySelector("#gameBox").appendChild(canvas);
+// button pour rejouer
+const replayButton = document.createElement("button");
+replayButton.textContent = "rejouer";
+replayButton.id = "replayButton";
+document.querySelector("#gameBox").appendChild(replayButton);
+replayButton.addEventListener("click", function () {init();});
 // Le context ctx sert à manipuler le contenue du canevas
 const ctx = canvas.getContext("2d");
+// son pour attraper goodie
 const goodySound = document.querySelector("#goodies");
+// son lorsqu'on attrape baddy ou perd le jeu
+const baddySound = document.querySelector("#baddies");
+// son pour gagner le jeu
+const winSound = document.querySelector("#win");
+
 
 
 /* SPRITES */
@@ -25,10 +30,15 @@ bgImage.src = "img/bg.svg";
 
 // Estampe gagnant
 let winImage = new Image();
-winImage.src = "img/win.png";
+winImage.src = "img/win.svg";
 
+// Estampe perdant
 let overImage = new Image();
-overImage.src = "img/over.png";
+overImage.src = "img/over.svg";
+
+// Estampe perdant
+let timeImage = new Image();
+timeImage.src = "img/time.svg";
 
 // Image du joueur
 let playerImage = new Image();
@@ -38,18 +48,25 @@ playerImage.src = "img/santa.svg";
 let goodyImage = new Image();
 goodyImage.src = "img/purple.svg";
 
-// // Image des goodies 2
-// let goodyImage = new Image();
-// goodyImage.src = "img/pink.svg";
+// Image des goodies 2
+let goodyImage2 = new Image();
+goodyImage2.src = "img/pink.svg";
 
-// // Image des goodies 3
-// let goodyImage = new Image();
-// goodyImage.src = "img/green.svg";
+// Image des goodies 3
+let goodyImage3 = new Image();
+goodyImage3.src = "img/green.svg";
 
-// // Image des goodies 4
-// let goodyImage = new Image();
-// goodyImage.src = "img/yellow.svg";
+// Image des goodies 4
+let goodyImage4 = new Image();
+goodyImage4.src = "img/yellow.svg";
 
+// Regrouper les images
+let goodyImages = [
+    goodyImage,
+    goodyImage2,
+    goodyImage3,
+    goodyImage4
+];
 
 // Image des baddis
 let baddyImage = new Image();
@@ -58,13 +75,17 @@ baddyImage.src = "img/baddy.svg";
 
 /* OBJETS GLOBAUX */
 const player = {
-    speed : 5, // mouvement en pixels par tick
+    speed : 8, // mouvement en pixels par tick
     width: 115,
     height: 115
 };
 
-let goodies = []; // variable pour contenir les goddies, un array
+// son pour le son de fond
+const bg = document.querySelector("#bg");
+bg.loop = true;
+bg.volume = 0.2;
 
+let goodies = []; // variable pour contenir les goddies, un array
 let baddies = []; // variable pour contenir les baddies, un array
 
 
@@ -74,10 +95,9 @@ let vY = 0;
 
 //The timer variables
 let t; //time
-let sec; //sec
-let min; //min
-
-let timer; //reference to timer object
+let sec = 0; //sec
+let min =1; //min
+let timer;
 let timeLeft;
 
 
@@ -92,43 +112,62 @@ addEventListener("touchstart", function (e) {
     //     vX = 0;
     //     vY = player.speed;
     // }
+
+    // activation du son
+    if (bg) {
+        bg.play();
+    }
+
     if (e.target.id == "lArrow") { // GAUCHE
         vX = -player.speed;
         vY = 0;
     }
+
     else if (e.target.id == "rArrow") { //DROIT
         vX = player.speed;
         vY = 0;
     }
+
     else { // ARRÊT S’arrête si vous touchez ailleurs
         vX = 0;
         vY = 0;
     }
+
 }, false);
 
 // Gérer les commandes du clavier
 addEventListener("keydown", function (e) {
     //Touches
-    // if (e.key == "ArrowUp") { // FLECHE HAUT
-    //     vX = 0;
-    //     vY = -player.speed;
-    // }
-    // if (e.key == "ArrowDown") { // FLECHE BAS
-    //     vX = 0;
-    //     vY = player.speed;
-    // }
+    // activation du son
+    if (bg) {
+        bg.play();
+    }
+
     if (e.key == "ArrowLeft") { // FLECHE GAUCHE
         vX = -player.speed;
         vY = 0;
     }
+
     if (e.key == "ArrowRight") { // FLECHE DROITE
         vX = player.speed;
         vY = 0;
     }
+
     if (e.key == " ") { // ARRÊT barre d’espace
         vX = 0;
         vY = 0;
     }
+
+}, false);
+
+// Arrêter le joueur quand on relâche la touche
+addEventListener("keyup", function (e) {
+
+    if (e.key == "ArrowLeft" || e.key == "ArrowRight") {
+        vX = 0;
+        vY = 0;
+    }
+
 }, false);
 
 
@@ -139,15 +178,15 @@ const init = function () {
     player.x = (canvas.width - player.width) / 2;
     player.y = canvas.height - player.height - 5;
 
-
+// les 4 goodies
     goodies = [
-        { width: 60, height: 60 },
-        { width: 60, height: 60 },
-        { width: 60, height: 60 },
-        { width: 60, height: 60 }
+        { width: 60, height: 60, image: goodyImage },
+        { width: 60, height: 60, image: goodyImage2 },
+        { width: 60, height: 60, image: goodyImage3 },
+        { width: 60, height: 60, image: goodyImage4 }
     ];
 
-      baddies = [
+    baddies = [
         { width: 60, height: 60 }
     ];
 
@@ -162,15 +201,25 @@ const init = function () {
         baddies[i].y = 0;
     }
 
+    clearInterval(timer);
+
+    // cacher le button pour rejouer
+    replayButton.style.display = "none";
+    vX = 0;
+    vY = 0;``
+    baddySound.pause();
+    baddySound.currentTime = 0;
+
+    timeLeft = 60;
+    min = 1;
+    sec = 0;
+
     pts =0;
 
     gameOver = false;
     overReady = false;
 
-    //Set the timer vars to 0, and start the timer
-	//This timer counts the time elapsed in game
-	// if you want a timer to set the maximum time to complete, just reverse the values
-	// and define a condition and a function to handle when the time runs out.
+// timer de 60 a 0 secondes
     timeLeft = 60;
     timer = setInterval(clock, 1000); //clock() is the function handle the timer (line 222)
 
@@ -181,24 +230,57 @@ const init = function () {
 
 /* BOUCLE PRINCIPALE : MAIN */
 const main = function () {
-	if (checkWin()) {
-		//WIN display win frame
-		if (winReady) {
-			//ctx.drawImage(winImage, 0, 0);
-			ctx.drawImage(winImage,
-				(canvas.width-winImage.width)/2,
-				(canvas.height-winImage.height)/2);
-		}
-        clearInterval(timer); //stop the clock
+if (checkWin()) {
+    clearInterval(timer);
+
+    // lorsqu'on gagne, on arrete le son de fond et on joue le son de victoire
+    bg.pause();
+    bg.currentTime = 0;
+
+    winSound.currentTime = 0;
+    winSound.play();
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+    // fond plus foncé pour le message de victoire
+    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    if (winImage.complete) {
+        let winWidth = canvas.width * 0.8;
+        let winHeight = winWidth * (winImage.height / winImage.width);
+
+    ctx.drawImage(winImage,(canvas.width - winWidth) / 2,(canvas.height - winHeight) / 2,
+        winWidth,
+        winHeight
+        );
     }
-    	else if (gameOver) {
-		//LOSE display Game Over frame
-        if (overImage.complete) {
-        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-        ctx.drawImage(overImage,
-            (canvas.width-overImage.width)/2,
-            (canvas.height-overImage.height)/2);
-    }
+}
+else if (gameOver) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // lorsqu'on perd, on arrete le son de fond et on joue le son de défaite
+    clearInterval(timer);
+    bg.pause();
+    bg.currentTime = 0;
+
+    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+    // fond plus foncé pour le message de victoire
+    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);   
+
+    if (overImage.complete) {
+        let overWidth = canvas.width * 0.8;
+        let overHeight = overWidth * (overImage.height / overImage.width);
+
+    ctx.drawImage(overImage,(canvas.width - overWidth) / 2,(canvas.height - overHeight) / 2,
+        overWidth,
+        overHeight
+    );
+
+    replayButton.style.display = "block";
+    
+}
     }
     else {
         //Pas encore gagné, jouer le jeu
@@ -206,13 +288,16 @@ const main = function () {
         if (player.x > 0 && player.x < canvas.width - player.width) {
             player.x += vX;
         }
+
         else {
             player.x -= vX;
             vX = -vX; //bounce
         }
+
         if (player.y > 0 && player.y < canvas.height - player.height) {
             player.y += vY
         }
+
         else {
             player.y -= vY;
             vY = -vY; //bounce
@@ -222,9 +307,9 @@ const main = function () {
 			spawnGoody(); //the function that generates a new goodie, line 214
 		}
         
-        //vérifier les collisions
+//vérifier les collisions
 for (let i = goodies.length - 1; i >= 0; i--) {
-    goodies[i].y++;
+    goodies[i].y += 2;
 
     if (checkCollision(player, goodies[i])) {
         goodies.splice(i, 1);
@@ -233,27 +318,33 @@ for (let i = goodies.length - 1; i >= 0; i--) {
         goodySound.currentTime = 0;
         goodySound.play();
     }
+
     else if (goodies[i].y > canvas.height) {
         goodies.splice(i, 1);
     }
         }
-        for (let i in baddies) {
-    baddies[i].y++;
-    
-            if (checkCollision(player,baddies[i])) {
-                gameOver = true;
-            }
 
-            if (baddies[i].y > canvas.height) {
-				baddies.splice(i, 1);
-        
-		}
+        for (let i = baddies.length - 1; i >= 0; i--) {
+    baddies[i].y += 2;
+
+    if (checkCollision(player, baddies[i])) {
+        gameOver = true;
+
+        baddySound.currentTime = 0;
+        baddySound.play();
+    }
+
+    else if (baddies[i].y > canvas.height) {
+        baddies.splice(i, 1);
+    }
 }
 
         render();
         window.requestAnimationFrame(main);
     }
 };
+
+
 
 /* AFFICHAGE : RENDER */
 const render = function (statut) {
@@ -266,39 +357,40 @@ const render = function (statut) {
         ctx.roundRect(40,40,canvas.width-80, canvas.height-80, [40]);
         ctx.fill();
     
-
         if (winImage.complete) {
             ctx.drawImage(winImage, (canvas.width - winImage.width)/2,
-                (canvas.height - winImage.height)/2);
+            (canvas.height - winImage.height)/2);
         }
     }
     else {  // sinon, afficher le jeu, statut par défaut
-       if (bgImage.complete) {
-    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+        if (bgImage.complete) {
+            ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 }
         if (playerImage.complete) {
             ctx.drawImage(playerImage, player.x, player.y, 115, 115);
         }
-        if (goodyImage.complete) {
-            for (let i in goodies) {
-                ctx.drawImage(goodyImage, goodies[i].x, goodies[i].y, 60, 60);
+
+    for (let i in goodies) {
+        if (goodies[i].image.complete) {
+            ctx.drawImage(goodies[i].image,goodies[i].x,goodies[i].y,60,60);
+        }
+}
+    if (baddyImage.complete) {
+        for (let i in baddies) {
+            ctx.drawImage(baddyImage, baddies[i].x, baddies[i].y, 60, 60);
             }
         }
-        if (baddyImage.complete) {
-            for (let i in baddies) {
-                ctx.drawImage(baddyImage, baddies[i].x, baddies[i].y, 60, 60);
-            }
-        }
+
+
         //Label
-        
         ctx.fillStyle = "rgb(250, 250, 250)";
         ctx.textAlign = "right";
         ctx.font = "20px monospace"; //peut être une fonte du CSS
-        ctx.fillText("Goodies restants : "+goodies.length, canvas.width - 32, 50);
-        ctx.fillText("Points: "+pts, canvas.width - 32, 82);
-		ctx.fillText("Time: " + min + ":" + sec, canvas.width - 32, 114);
+        ctx.fillText("Cadeaux : " + pts + "/40", canvas.width - 32, 50);
+        ctx.fillText("Time: " + min + ":" + (sec < 10 ? "0" : "") + sec, canvas.width - 32, 114);   
     }
 };
+
 
 
 /* AUTRES FONCTIONS */
@@ -312,50 +404,62 @@ const checkCollision = function (obj1,obj2) {
 };
 
 
-
 //Vérifiez si nous avons gagné
 let checkWin = function () {
-	if (goodies.length > 0) {
-		return false;
-	} else {
-		return true;
-	}
+    return pts >= 40;
 };
 
-
+// pour faire apparaître un goodie aléatoire de chaque couleur
 let spawnGoody = function () {
-	//push() adds an item to the array, a new goodie
-	goodies.push({
-		//We need to set the new goodie’s init properties
-		width: 60,
-		height: 60,
-		//and place it at a random position at the top
-		x: (Math.random() * (canvas.width - 60)),
-		y: 0
-	});
+    let random = Math.random();
+    let selectedImage;
 
- if (Math.random() > 0.5) {
-    baddies.push({
+    // Choisir la couleur du goodie
+    if (random < 0.7) {
+        selectedImage = goodyImage; 
+    }
+    else if (random < 0.6) {
+        selectedImage = goodyImage2; 
+    }
+    else if (random < 0.5) {
+        selectedImage = goodyImage3; 
+    }
+    else  {
+        selectedImage = goodyImage4; 
+    }
+
+    goodies.push({
         width: 60,
         height: 60,
+        image: selectedImage,
         x: Math.random() * (canvas.width - 60),
         y: 0
     });
-}
+
+    // Faire apparaître un baddy parfois
+    if (Math.random() > 0.5) {
+        baddies.push({
+            width: 60,
+            height: 60,
+            x: Math.random() * (canvas.width - 60),
+            y: 0
+        });
+    }
 };
 
 let clock = function () {
     timeLeft--;
-
     min = Math.floor(timeLeft / 60);
     sec = timeLeft % 60;
 
-    if (timeLeft <= 0) {
-        timeLeft = 0;
-        gameOver = true;
-        clearInterval(timer);
-    }
-};
+if (timeLeft <= 0) {
+    timeLeft = 0;
+    gameOver = true;
+    clearInterval(timer);
+    // jouer le son de défaite
+    baddySound.currentTime = 0;
+    baddySound.play();
+}}
 
 //Lancer le jeu
 init();
